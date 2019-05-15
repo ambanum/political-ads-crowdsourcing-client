@@ -1,1 +1,9 @@
-[]
+{
+  "app.components.Ad.cantDisplayMedia": "",
+  "app.components.Ad.sponsorised": "",
+  "app.components.Ad.sponsorisedBy": "sponsorised by",
+  "app.containers.Ads.counter": "",
+  "app.containers.Ads.header": "This is the Ads container!",
+  "app.containers.HomePage.header": "This is the HomePage container!",
+  "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
+}

@@ -1,0 +1,9 @@
+{
+  "app.components.Ad.cantDisplayMedia": "Facebook ne nous permet pas d’afficher l’image ou la vidéo présentée avec cette publicité",
+  "app.components.Ad.sponsorised": "Sponsorisé",
+  "app.components.Ad.sponsorisedBy": "Financé par",
+  "app.containers.Ads.counter": "Nombre de publicités {count}",
+  "app.containers.Ads.header": "Publicités politiques et liées à des débats d’intérêt général sur Facebook",
+  "app.containers.HomePage.header": "This is the HomePage container!",
+  "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
+}
