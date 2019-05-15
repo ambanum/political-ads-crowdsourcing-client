@@ -1,9 +1,12 @@
 {
-  "app.components.Ad.cantDisplayMedia": "",
-  "app.components.Ad.sponsorised": "",
-  "app.components.Ad.sponsorisedBy": "sponsorised by",
-  "app.containers.Ads.counter": "",
-  "app.containers.Ads.header": "This is the Ads container!",
+  "app.components.Ad.amountSpent": "Amount spent",
+  "app.components.Ad.cantDisplayMedia": "Facebook does not allow us to display <abbr title=\"The Ad Library API says the following: Note that you cannot currently download a batch of rendered ads, however you can download ad creative such as images and text for an individual ad.\">directly</abbr> the image or video presented with this ad",
+  "app.components.Ad.impressions": "Impressions",
+  "app.components.Ad.sponsorised": "Sponsored",
+  "app.components.Ad.components.Ad.sponsorisedBy": "Funded by",
+  "app.containers.Ads.counter": "{count} advertisements",
+  "app.containers.Ads.description": "Facebook has been allowing users to query its advertising library since the beginning of May to access political and public interest debate ads that have been posted on Facebook or Instagram. <Unfortunately, there is not yet a detailed report for countries in Europe other than the United Kingdom and Ukraine. Until these reports are made available, and since access to this library requires a cumbersome procedure, we want to make as many of these advertisements as possible available to any citizen so that everyone can be sure of their legality before the European elections",
+  "app.containers.Ads.title": "Check whether political advertisements comply with the law",
   "app.containers.HomePage.header": "This is the HomePage container!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
 }

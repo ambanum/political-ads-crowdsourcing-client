@@ -2,12 +2,13 @@ import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
 import Ad from 'components/Ad';
 import styled from 'styled-components';
+import { Container, Hero, Section, Heading, Tag } from 'react-bulma-components';
 import { makeSelectAds } from '../App/selectors';
 import { loadAds } from '../App/actions';
 import saga from './saga';
@@ -27,90 +28,75 @@ const AdsCollection = styled.div`
   }
 `;
 
-const Title = styled.h1`
-  font-weight: normal;
+const Description = styled.p`
+  margin-bottom: 1em;
 `;
 
-const Container = styled.section`
-  margin: 0 auto;
-  padding: 1em;
-
-  @media screen and (min-width: 1088px) {
-    max-width: 960px;
-    width: 960px;
-  }
-
-  @media screen and (max-width: 1279px) {
-    max-width: 1152px;
-    width: auto;
-  }
-
-  @media screen and (min-width: 1280px) {
-    max-width: 1152px;
-    width: 1152px;
-  }
-
-  @media screen and (min-width: 1472px) {
-    max-width: 1344px;
-    width: 1344px;
-  }
-`;
-
-const Counter = styled.h2`
-  font-weight: normal;
-`;
-
-export function Ads(props) {
+export function Ads({ ads, error, intl, load }) {
   useInjectSaga({ key: 'ads', saga });
 
   useEffect(() => {
-    if (props.error) {
-      console.log(props.error);
+    if (error) {
+      console.log(error);
     }
 
-    if (!props.ads && !props.error) {
-      props.load();
+    if (!ads && !error) {
+      load();
     }
   });
+
   return (
-    <Container>
+    <React.Fragment>
       <Helmet>
-        <title>Ads</title>
+        <title>{intl.messages['app.containers.Ads.title']}</title>
         <meta
           name="description"
-          content="Political and public interest debate ads on Facebook"
+          content={intl.messages['app.containers.Ads.title']}
         />
       </Helmet>
-      <Title>
-        <FormattedMessage {...messages.header} />
-      </Title>
-      <Counter>
-        {props.ads && (
-          <FormattedMessage
-            {...messages.counter}
-            values={{
-              count: props.ads.length,
-            }}
-          />
-        )}
-      </Counter>
-      <AdsCollection>
-        {props.ads &&
-          props.ads.map(ad => (
-            <Ad
-              title={ad.page_name}
-              content={ad.ad_creative_body}
-              pageId={ad.page_id}
-              fundingEntity={ad.funding_entity}
-              impressionsLowerBound={ad.impressions.lower_bound}
-              impressionsUpperBound={ad.impressions.upper_bound}
-              spendLowerBound={ad.spend.lower_bound}
-              spendUpperBound={ad.spend.upper_bound}
-              currency={ad.currency}
-            />
-          ))}
-      </AdsCollection>
-    </Container>
+      <Hero color="info" gradient size="medium">
+        <Hero.Body>
+          <Container>
+            <Heading>
+              <FormattedMessage {...messages.title} />
+            </Heading>
+          </Container>
+        </Hero.Body>
+      </Hero>
+      <Section>
+        <Container>
+          <Description>
+            <FormattedHTMLMessage {...messages.description} />
+          </Description>
+          <Tag size="medium">
+            {ads && (
+              <FormattedMessage
+                {...messages.counter}
+                values={{
+                  count: ads.length,
+                }}
+              />
+            )}
+          </Tag>
+          <AdsCollection>
+            {ads &&
+              ads.map(ad => (
+                <Ad
+                  title={ad.page_name}
+                  content={ad.ad_creative_body}
+                  pageId={ad.page_id}
+                  fundingEntity={ad.funding_entity}
+                  impressionsLowerBound={ad.impressions.lower_bound}
+                  impressionsUpperBound={ad.impressions.upper_bound}
+                  spendLowerBound={ad.spend.lower_bound}
+                  spendUpperBound={ad.spend.upper_bound}
+                  currency={ad.currency}
+                />
+              ))}
+          </AdsCollection>
+        </Container>
+      </Section>
+    </React.Fragment>
   );
 }
 
@@ -118,6 +104,7 @@ Ads.propTypes = {
   ads: PropTypes.array,
   load: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  intl: intlShape.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -138,4 +125,4 @@ const withConnect = connect(
 export default compose(
   withConnect,
   memo,
-)(Ads);
+)(injectIntl(Ads));

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import messages from './messages';
 import { prettifyImpressions, prettifySpend } from './utils';
 
@@ -9,10 +9,9 @@ const Wrapper = styled.div`
   margin-bottom: 1.5em;
   line-height: 1.5;
   padding: 1em;
-  border-radius: 3px;
-  box-shadow: #e9eaeb 0 0 2px 0;
-  border: 1px solid #e9eaeb;
-  color: #1c1e21;
+  border-radius: 2px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1);
+  border: 1px solid rgba(10,10,10,.1);
   font-size: 14px;
   break-inside: avoid;
 `;
@@ -25,9 +24,10 @@ const Title = styled.h3`
 `;
 
 const Subtitle = styled.h4`
-  margin-top: 0;
+  margin-bottom: 1em;
   font-size: 12px;
   line-height: 16px;
+  font-weight: bold;
   color: #606770;
 `;
 
@@ -108,7 +108,7 @@ function Ad({
       </Subtitle>
       <div>{content}</div>
       <Media>
-        <FormattedMessage {...messages.cantDisplayMedia} />
+        <FormattedHTMLMessage {...messages.cantDisplayMedia} />
       </Media>
       <Separation />
       <MetaData>
