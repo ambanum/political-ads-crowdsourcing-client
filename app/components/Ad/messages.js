@@ -9,13 +9,13 @@ import { defineMessages } from 'react-intl';
 export const scope = 'app.components.Ad';
 
 export default defineMessages({
-  sponsorised: {
-    id: `${scope}.sponsorised`,
-    defaultMessage: 'sponsorised',
+  sponsored: {
+    id: `${scope}.sponsored`,
+    defaultMessage: 'sponsored',
   },
-  sponsorisedBy: {
-    id: `${scope}.sponsorisedBy`,
-    defaultMessage: 'sponsorised by',
+  sponsoredBy: {
+    id: `${scope}.sponsoredBy`,
+    defaultMessage: 'sponsored by',
   },
   cantDisplayMedia: {
     id: `${scope}.cantDisplayMedia`,

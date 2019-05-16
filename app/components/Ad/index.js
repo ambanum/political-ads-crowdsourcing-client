@@ -100,17 +100,17 @@ function Ad({
         </Link>
       </Title>
       <Subtitle>
-        <FormattedMessage {...messages.sponsorised} />
+        <FormattedMessage {...messages.sponsored} />
         <React.Fragment>
           &nbsp;•&nbsp;
           {fundingEntity && (
             <React.Fragment>
               <Light>
-                <FormattedMessage {...messages.sponsorisedBy} />
+                <FormattedMessage {...messages.sponsoredBy} />
               </Light>{' '}
               {fundingEntity}
             </React.Fragment>
-            )}
+          )}
           {!fundingEntity && (
             <React.Fragment>
               <Light>

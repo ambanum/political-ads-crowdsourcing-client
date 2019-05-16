@@ -37,8 +37,8 @@ const AdsCollection = styled.div`
   }
 `;
 
-const Description = styled.p`
-  margin-bottom: 1em;
+const P = styled.p`
+  margin-bottom: 2em;
 `;
 
 export function Ads({ ads, error, intl, load, loading }) {
@@ -73,14 +73,43 @@ export function Ads({ ads, error, intl, load, loading }) {
       </Hero>
       <Section>
         <Container>
-          <Description>
-            <FormattedHTMLMessage {...messages.description} />
-          </Description>
+          <Heading size={4} renderAs="h2">
+            <FormattedHTMLMessage {...messages['description.what']} />
+          </Heading>
+          <P>
+            <FormattedHTMLMessage {...messages['description.whatParagraph']} />
+          </P>
+          <Heading size={4} renderAs="h2">
+            <FormattedHTMLMessage {...messages['description.why']} />
+          </Heading>
+          <P>
+            <FormattedHTMLMessage {...messages['description.whyParagraph']} />
+          </P>
+          <Heading size={4} renderAs="h2">
+            <FormattedHTMLMessage {...messages['description.how']} />
+          </Heading>
+          <P>
+            <FormattedHTMLMessage {...messages['description.howParagraph']} />
+          </P>
+          <Heading size={4} renderAs="h2">
+            <FormattedHTMLMessage {...messages['description.limitations']} />
+          </Heading>
+          <P>
+            <FormattedHTMLMessage
+              {...messages['description.limitationsParagraph']}
+            />
+          </P>
+          <Heading size={4} renderAs="h2">
+            <FormattedHTMLMessage {...messages['description.more']} />
+          </Heading>
+          <P>
+            <FormattedHTMLMessage {...messages['description.moreParagraph']} />
+          </P>
           {loading && <div className="lds-dual-ring" />}
           {!loading && ads && (
             <Tag size="medium">
               {ads && (
-                <FormattedMessage
+                <FormattedHTMLMessage
                   {...messages.counter}
                   values={{
                     count: ads.length,
