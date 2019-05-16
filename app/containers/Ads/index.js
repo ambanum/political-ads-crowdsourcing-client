@@ -92,8 +92,9 @@ export function Ads({ ads, error, intl, load, loading }) {
           {!loading && ads && (
             <AdsCollection>
               {ads &&
-                ads.map(ad => (
+                ads.map((ad, index) => (
                   <Ad
+                    key={index}
                     title={ad.page_name}
                     content={ad.ad_creative_body}
                     pageId={ad.page_id}
