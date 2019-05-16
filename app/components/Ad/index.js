@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import linkifyHtml from 'linkifyjs/html';
 import messages from './messages';
 import { prettifyImpressions, prettifySpend } from './helpers';
 
@@ -107,8 +108,9 @@ function Ad({
           </Light>{' '}
           {fundingEntity}
         </Subtitle>
+      {content && (
+        <div dangerouslySetInnerHTML={{ __html: linkifyHtml(content) }} />
       )}
-      <div>{content}</div>
       <Media>
         <FormattedHTMLMessage {...messages.cantDisplayMedia} />
       </Media>
