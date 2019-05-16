@@ -1,8 +1,9 @@
 import { LOAD_ADS, LOAD_ADS_SUCCESS, LOAD_ADS_ERROR } from './constants';
 
-export function loadAds() {
+export function loadAds(options) {
   return {
     type: LOAD_ADS,
+    options,
   };
 }
 

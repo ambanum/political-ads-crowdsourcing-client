@@ -12,6 +12,7 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
 import Ad from 'components/Ad';
+import Spinner from 'components/Spinner';
 import styled from 'styled-components';
 import {
   Container,
@@ -26,7 +27,7 @@ import {
   makeSelectLoading,
   makeSelectError,
 } from '../App/selectors';
-import { loadAds } from '../App/actions';
+import { loadAds } from './actions';
 import saga from './saga';
 import messages from './messages';
 
@@ -61,7 +62,16 @@ const StyledHeading = styled(Heading)`
   text-align: center;
 `;
 
-export function Ads({ ads, error, intl, load, loading }) {
+export function Ads({
+  ads,
+  error,
+  intl,
+  load,
+  loading,
+  match: {
+    params: { country },
+  },
+}) {
   useInjectSaga({ key: 'ads', saga });
   useEffect(() => {
     if (error) {
@@ -69,7 +79,7 @@ export function Ads({ ads, error, intl, load, loading }) {
     }
 
     if (!ads && !error) {
-      load();
+      load({ country });
     }
   });
 
@@ -152,7 +162,7 @@ export function Ads({ ads, error, intl, load, loading }) {
       </Explanation>
       <Section>
         <Container>
-          {loading && <div className="lds-dual-ring" />}
+          {loading && <Spinner />}
           {!loading && ads && (
             <Tag size="medium">
               {ads && (
@@ -170,6 +180,7 @@ export function Ads({ ads, error, intl, load, loading }) {
               {ads &&
                 ads.map((ad, index) => (
                   <Ad
+                    // eslint-disable-next-line react/no-array-index-key
                     key={index}
                     title={ad.page_name}
                     content={ad.ad_creative_body}
@@ -200,6 +211,7 @@ Ads.propTypes = {
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   intl: intlShape.isRequired,
   loading: PropTypes.bool,
+  match: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -210,7 +222,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    load: () => dispatch(loadAds()),
+    load: options => dispatch(loadAds(options)),
   };
 }
 

@@ -8,13 +8,16 @@
  */
 
 import produce from 'immer';
-import { LOAD_ADS_SUCCESS, LOAD_ADS, LOAD_ADS_ERROR } from './constants';
+import {
+  LOAD_ADS_SUCCESS,
+  LOAD_ADS,
+  LOAD_ADS_ERROR,
+} from '../AdsPage/constants';
 
 // The initial state of the App
 export const initialState = {
   loading: false,
   error: false,
-  currentUser: false,
   ads: null,
 };
 
