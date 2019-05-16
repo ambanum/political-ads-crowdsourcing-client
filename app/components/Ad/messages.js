@@ -30,4 +30,8 @@ export default defineMessages({
     id: `${scope}.impressions`,
     defaultMessage: 'Impressions',
   },
+  notSpecifiedSponsor: {
+    id: `${scope}.notSpecifiedSponsor`,
+    defaultMessage: 'Facebook does not specify the funder',
+  },
 });

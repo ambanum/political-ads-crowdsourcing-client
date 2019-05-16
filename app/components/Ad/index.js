@@ -99,15 +99,27 @@ function Ad({
           {title}
         </Link>
       </Title>
-      {fundingEntity && (
-        <Subtitle>
-          <FormattedMessage {...messages.sponsorised} />
+      <Subtitle>
+        <FormattedMessage {...messages.sponsorised} />
+        <React.Fragment>
           &nbsp;•&nbsp;
-          <Light>
-            <FormattedMessage {...messages.sponsorisedBy} />
-          </Light>{' '}
-          {fundingEntity}
-        </Subtitle>
+          {fundingEntity && (
+            <React.Fragment>
+              <Light>
+                <FormattedMessage {...messages.sponsorisedBy} />
+              </Light>{' '}
+              {fundingEntity}
+            </React.Fragment>
+            )}
+          {!fundingEntity && (
+            <React.Fragment>
+              <Light>
+                <FormattedMessage {...messages.notSpecifiedSponsor} />
+              </Light>
+            </React.Fragment>
+          )}
+        </React.Fragment>
+      </Subtitle>
       {content && (
         <div dangerouslySetInnerHTML={{ __html: linkifyHtml(content) }} />
       )}

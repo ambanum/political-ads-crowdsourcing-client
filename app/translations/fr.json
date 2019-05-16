@@ -2,6 +2,7 @@
   "app.components.Ad.amountSpent": "Montant dépensé",
   "app.components.Ad.cantDisplayMedia": "Facebook ne nous permet pas d’afficher <abbr title=\"L'API Ad Library dit la chose suivante : Note that you cannot currently download a batch of rendered ads, however you can download ad creative such as images and text for an individual ad.\">directement</abbr> l’image ou la vidéo présentée avec cette publicité",
   "app.components.Ad.impressions": "Impressions",
+  "app.components.Ad.notSpecifiedSponsor": "Facebook ne spécifie pas le financeur",
   "app.components.Ad.sponsorised": "Sponsorisé",
   "app.components.Ad.sponsorisedBy": "Financé par",
   "app.containers.Ads.counter": "{count} publicités aléatoires",
