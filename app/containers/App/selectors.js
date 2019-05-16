@@ -11,10 +11,27 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
+const makeSelectLoading = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.loading,
+  );
+
+const makeSelectError = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.error,
+  );
+
 const makeSelectAds = () =>
   createSelector(
     selectGlobal,
     globalState => globalState.ads,
   );
 
-export { makeSelectLocation, makeSelectAds };
+export {
+  makeSelectLocation,
+  makeSelectLoading,
+  makeSelectError,
+  makeSelectAds,
+};

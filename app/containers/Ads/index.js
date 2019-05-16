@@ -2,14 +2,23 @@ import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { injectIntl, intlShape, FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import {
+  injectIntl,
+  intlShape,
+  FormattedMessage,
+  FormattedHTMLMessage,
+} from 'react-intl';
 import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
 import Ad from 'components/Ad';
 import styled from 'styled-components';
 import { Container, Hero, Section, Heading, Tag } from 'react-bulma-components';
-import { makeSelectAds } from '../App/selectors';
+import {
+  makeSelectAds,
+  makeSelectLoading,
+  makeSelectError,
+} from '../App/selectors';
 import { loadAds } from '../App/actions';
 import saga from './saga';
 import messages from './messages';
@@ -32,9 +41,8 @@ const Description = styled.p`
   margin-bottom: 1em;
 `;
 
-export function Ads({ ads, error, intl, load }) {
+export function Ads({ ads, error, intl, load, loading }) {
   useInjectSaga({ key: 'ads', saga });
-
   useEffect(() => {
     if (error) {
       console.log(error);
@@ -68,32 +76,41 @@ export function Ads({ ads, error, intl, load }) {
           <Description>
             <FormattedHTMLMessage {...messages.description} />
           </Description>
-          <Tag size="medium">
-            {ads && (
-              <FormattedMessage
-                {...messages.counter}
-                values={{
-                  count: ads.length,
-                }}
-              />
-            )}
-          </Tag>
-          <AdsCollection>
-            {ads &&
-              ads.map(ad => (
-                <Ad
-                  title={ad.page_name}
-                  content={ad.ad_creative_body}
-                  pageId={ad.page_id}
-                  fundingEntity={ad.funding_entity}
-                  impressionsLowerBound={ad.impressions.lower_bound}
-                  impressionsUpperBound={ad.impressions.upper_bound}
-                  spendLowerBound={ad.spend.lower_bound}
-                  spendUpperBound={ad.spend.upper_bound}
-                  currency={ad.currency}
+          {loading && <div className="lds-dual-ring" />}
+          {!loading && ads && (
+            <Tag size="medium">
+              {ads && (
+                <FormattedMessage
+                  {...messages.counter}
+                  values={{
+                    count: ads.length,
+                  }}
                 />
-              ))}
-          </AdsCollection>
+              )}
+            </Tag>
+          )}
+          {!loading && ads && (
+            <AdsCollection>
+              {ads &&
+                ads.map(ad => (
+                  <Ad
+                    title={ad.page_name}
+                    content={ad.ad_creative_body}
+                    pageId={ad.page_id}
+                    fundingEntity={ad.funding_entity}
+                    impressionsLowerBound={
+                      ad.impressions && ad.impressions.lower_bound
+                    }
+                    impressionsUpperBound={
+                      ad.impressions && ad.impressions.upper_bound
+                    }
+                    spendLowerBound={ad.spend && ad.spend.lower_bound}
+                    spendUpperBound={ad.spend && ad.spend.upper_bound}
+                    currency={ad.currency}
+                  />
+                ))}
+            </AdsCollection>
+          )}
         </Container>
       </Section>
     </React.Fragment>
@@ -105,10 +122,13 @@ Ads.propTypes = {
   load: PropTypes.func.isRequired,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   intl: intlShape.isRequired,
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
   ads: makeSelectAds(),
+  loading: makeSelectLoading(),
+  error: makeSelectError(),
 });
 
 function mapDispatchToProps(dispatch) {
