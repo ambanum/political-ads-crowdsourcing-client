@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import messages from './messages';
-import { prettifyImpressions, prettifySpend } from './utils';
+import { prettifyImpressions, prettifySpend } from './helpers';
 
 const Wrapper = styled.div`
   margin-bottom: 1.5em;

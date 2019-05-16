@@ -1,4 +1,6 @@
-function prettifyImpressions(min, max) {
+import getSymbolFromCurrency from 'currency-symbol-map';
+
+export function prettifyImpressions(min, max) {
   if (max < 1000) {
     return '< 1000';
   }
@@ -30,45 +32,42 @@ function prettifyImpressions(min, max) {
   return '';
 }
 
-function prettifySpend(min, max, currency) {
+export function prettifySpend(min, max, currency) {
+  const currencySymbol = getSymbolFromCurrency(currency) || currency;
+
   if (max < 100) {
-    return '< 100€';
+    return `< 100${currencySymbol}`;
   }
   if (min >= 100 && max < 500) {
-    return '100€ - 499€';
+    return `100${currencySymbol} - 499${currencySymbol}`;
   }
   if (min >= 500 && max < 1000) {
-    return '500€ - 999€';
+    return `500${currencySymbol} - 999${currencySymbol}`;
   }
   if (min >= 1000 && max < 5000) {
-    return '1K€ - 5K€';
+    return `1K${currencySymbol} - 5K${currencySymbol}`;
   }
   if (min >= 5000 && max < 10000) {
-    return '5K€ - 10K€';
+    return `5K${currencySymbol} - 10K${currencySymbol}`;
   }
   if (min >= 10000 && max < 50000) {
-    return '10K€ - 50K€';
+    return `10K${currencySymbol} - 50K${currencySymbol}`;
   }
   if (min >= 50000 && max < 100000) {
-    return '50K€ - 100K€';
+    return `50K${currencySymbol} - 100K${currencySymbol}`;
   }
   if (min >= 100000 && max < 200000) {
-    return '100K€ - 200K€';
+    return `100K${currencySymbol} - 200K${currencySymbol}`;
   }
   if (min >= 200000 && max < 500000) {
-    return '200K€ - 500K€';
+    return `200K${currencySymbol} - 500K${currencySymbol}`;
   }
   if (min >= 500000 && max < 1000000) {
-    return '500K€ - 1M€';
+    return `500K${currencySymbol} - 1M${currencySymbol}`;
   }
   if (max > 1000000) {
-    return '> 1M€';
+    return `> 1M${currencySymbol}`;
   }
 
   return '';
 }
-
-module.exports = {
-  prettifyImpressions,
-  prettifySpend,
-};
