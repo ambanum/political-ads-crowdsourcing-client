@@ -15,6 +15,7 @@ const Wrapper = styled.div`
   border: 1px solid rgba(10, 10, 10, 0.1);
   font-size: 14px;
   break-inside: avoid;
+  background: #FFF;
 `;
 
 const Title = styled.h3`
