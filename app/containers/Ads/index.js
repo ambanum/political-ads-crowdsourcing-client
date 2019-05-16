@@ -74,7 +74,28 @@ export function Ads({ ads, error, intl, load, loading }) {
       <Section>
         <Container>
           <Description>
-            <FormattedHTMLMessage {...messages.description} />
+            <h2>
+              <FormattedHTMLMessage {...messages.description.what} />
+            </h2>
+            <FormattedHTMLMessage {...messages.description.whatParagraph} />
+            <h2>
+              <FormattedHTMLMessage {...messages.description.why} />
+            </h2>
+            <FormattedHTMLMessage {...messages.description.whyParagraph} />
+            <h2>
+              <FormattedHTMLMessage {...messages.description.how} />
+            </h2>
+            <FormattedHTMLMessage {...messages.description.howParagraph} />
+            <h2>
+              <FormattedHTMLMessage {...messages.description.limitations} />
+            </h2>
+            <FormattedHTMLMessage
+              {...messages.description.limitationsParagraph}
+            />
+            <h2>
+              <FormattedHTMLMessage {...messages.description.more} />
+            </h2>
+            <FormattedHTMLMessage {...messages.description.moreParagraph} />
           </Description>
           {loading && <div className="lds-dual-ring" />}
           {!loading && ads && (
