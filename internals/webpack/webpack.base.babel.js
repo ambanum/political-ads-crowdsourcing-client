@@ -4,6 +4,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
+const config = require('config');
 
 module.exports = options => ({
   mode: options.mode,
@@ -113,6 +114,12 @@ module.exports = options => ({
     // drop any unreachable code.
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+      GLOBAL_CONFIG: JSON.stringify(config),
     }),
   ]),
   resolve: {
