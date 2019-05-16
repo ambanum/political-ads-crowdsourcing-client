@@ -10,8 +10,8 @@ const Wrapper = styled.div`
   line-height: 1.5;
   padding: 1em;
   border-radius: 2px;
-  box-shadow: 0 2px 3px rgba(10,10,10,.1);
-  border: 1px solid rgba(10,10,10,.1);
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1);
+  border: 1px solid rgba(10, 10, 10, 0.1);
   font-size: 14px;
   break-inside: avoid;
 `;
@@ -98,14 +98,16 @@ function Ad({
           {title}
         </Link>
       </Title>
-      <Subtitle>
-        <FormattedMessage {...messages.sponsorised} />
-        &nbsp;•&nbsp;
-        <Light>
-          <FormattedMessage {...messages.sponsorisedBy} />
-        </Light>{' '}
-        {fundingEntity}
-      </Subtitle>
+      {fundingEntity && (
+        <Subtitle>
+          <FormattedMessage {...messages.sponsorised} />
+          &nbsp;•&nbsp;
+          <Light>
+            <FormattedMessage {...messages.sponsorisedBy} />
+          </Light>{' '}
+          {fundingEntity}
+        </Subtitle>
+      )}
       <div>{content}</div>
       <Media>
         <FormattedHTMLMessage {...messages.cantDisplayMedia} />
