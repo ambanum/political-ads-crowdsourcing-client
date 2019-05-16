@@ -99,10 +99,10 @@ function Ad({
         </Link>
       </Title>
       <Subtitle>
-        <FormattedMessage {...messages.sponsorised} />
+        <FormattedMessage {...messages.sponsored} />
         &nbsp;•&nbsp;
         <Light>
-          <FormattedMessage {...messages.sponsorisedBy} />
+          <FormattedMessage {...messages.sponsoredBy} />
         </Light>{' '}
         {fundingEntity}
       </Subtitle>
