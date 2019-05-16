@@ -4,8 +4,8 @@
   "app.components.Ad.impressions": "Impressions",
   "app.components.Ad.sponsorised": "Sponsorisé",
   "app.components.Ad.sponsorisedBy": "Financé par",
-  "app.containers.Ads.counter": "{count} publicités",
-  "app.containers.Ads.description": "Facebook permet depuis début mai d'interroger sa bibliothèque publicitaire pour accéder aux publicités politiques et liées à des débats d’intérêt général qui ont été diffusées sur Facebook ou Instagram. <br />Malheureusement, il n'existe pas encore de rapport détaillé pour les autres pays d'Europe que le Royaume-Uni et l'Ukraine. En attendant que ces rapports soient mis à disposition, et étant donné qu'accéder à cette bibliothèque nécessite une procédure lourde, nous souhaitons rendre disponible à n'importe quel citoyen le maximum de ces publicités afin que chacun puisse <strong>s'assurer de leur légalité avant les élections européennes.</strong>",
+  "app.containers.Ads.counter": "{count} publicités aléatoires",
+  "app.containers.Ads.description": "Facebook permet depuis début mai d'interroger sa bibliothèque publicitaire pour accéder aux publicités politiques et liées à des débats d’intérêt général qui ont été diffusées sur Facebook ou Instagram. <br />Malheureusement, il n'existe pas encore de rapport détaillé pour les autres pays d'Europe que le Royaume-Uni. En attendant que ces rapports soient mis à disposition, et étant donné qu'accéder à cette bibliothèque nécessite une procédure lourde, nous souhaitons rendre disponible à n'importe quel citoyen le maximum de ces publicités afin que chacun puisse <strong>s'assurer de leur légalité avant les élections européennes.</strong>",
   "app.containers.Ads.title": "Vérifier si les publicités politiques respectent la loi",
   "app.containers.HomePage.header": "This is the HomePage container!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
