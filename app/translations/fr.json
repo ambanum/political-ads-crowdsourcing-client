@@ -30,9 +30,9 @@
   "app.containers.CrowdsourcingPage.displayNewAd": "Afficher une autre publicité",
   "app.containers.CrowdsourcingPage.header": "Évaluation de la légalité des publicités",
   "app.containers.CrowdsourcingPage.newControversial": "Introduit un élément polémique nouveau",
-  "app.containers.CrowdsourcingPage.notRelatedToPolitics": "Non politique, ni liée à un débat d'intérêt général",
-  "app.containers.CrowdsourcingPage.nothingSuspect": "Promeut l'engagement mais pas un parti ou candidat spécifique",
-  "app.containers.CrowdsourcingPage.promotesCandidate": "Promeut un candidat, une liste ou un parti",
+  "app.containers.CrowdsourcingPage.notRelatedToPolitics": "Ni politique, ni liée à un débat d'intérêt général",
+  "app.containers.CrowdsourcingPage.nothingSuspect": "Promeut l'engagement mais ni un parti ni candidat spécifique",
+  "app.containers.CrowdsourcingPage.promotesCandidate": "Promeut ou critique un candidat, une liste ou un parti",
   "app.containers.HomePage.header": "This is the HomePage container!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
 }

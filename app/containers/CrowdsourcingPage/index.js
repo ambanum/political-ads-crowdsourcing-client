@@ -93,11 +93,9 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
         <Container>
           <Back href="/ads">Retourner à la liste des publicités</Back>
           <p>
-            Cette interface permet d'évaluer la légalité de chaque publicité.
+            Cette interface permet d'évaluer la légalité de chaque publicité. Évaluez chaque publicité avec les boutons qui l'entourent.
           </p>
           <p>
-            Évaluez chaque publicité avec les boutons qui l'entourent.
-            <br />
             Des informations complémentaires sur chacun des cas sont disponibles
             sur notre{' '}
             <a
@@ -220,7 +218,7 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
                   Nous enregistrons votre proposition d'évaluation, la date et
                   des{' '}
                   <abbr title="hash salé de l'IP et du user-agent">
-                    éléments d'identification anonyme
+                    éléments d'identification anonymes
                   </abbr>{' '}
                   afin de pouvoir effacer d'éventuelles contributions
                   malveillantes.
@@ -228,10 +226,10 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
               </Columns.Column>
               <Columns.Column>
                 <p>
-                  Nous travaillons à rendre lisible les résultats de cette
+                  Nous travaillons à rendre lisibles les résultats de cette
                   évaluation, si vous voulez y avoir accès avant,{' '}
                   <a href="mailto:matti.schneider@diplomatie.gouv.fr">
-                    contactez-nous
+                    contactez-nous.
                   </a>
                 </p>
               </Columns.Column>

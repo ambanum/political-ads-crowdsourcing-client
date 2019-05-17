@@ -29,7 +29,7 @@ export default defineMessages({
   },
   notRelatedToPolitics: {
     id: `${scope}.notRelatedToPolitics`,
-    defaultMessage: "Non politique, ni d'intérêt général",
+    defaultMessage: "Ni politique, ni d'intérêt général",
   },
   cantSay: {
     id: `${scope}.cantSay`,
