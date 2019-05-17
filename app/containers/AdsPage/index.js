@@ -178,10 +178,9 @@ export function Ads({
           {!loading && ads && (
             <AdsCollection>
               {ads &&
-                ads.map((ad, index) => (
+                ads.map(ad => (
                   <Ad
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={index}
+                    key={ad.id}
                     title={ad.page_name}
                     content={ad.ad_creative_body}
                     pageId={ad.page_id}
