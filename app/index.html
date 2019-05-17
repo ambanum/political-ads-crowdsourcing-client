@@ -11,7 +11,7 @@
   <!-- Allow installing the app to the homescreen -->
   <meta name="mobile-web-app-capable" content="yes">
 
-  <link rel="icon" href="/favicon.ico" />
+  <link rel="icon" href="/ads/favicon.ico" />
   <title>React.js Boilerplate</title>
 </head>
 
@@ -24,6 +24,35 @@
   <!-- The app hooks into this div -->
   <div id="app"></div>
   <!-- A lot of magic happens in this file. HtmlWebpackPlugin automatically injects all assets (e.g. bundle.js, main.css) with the correct HTML tags, which is why they are missing in this file. Don't add any assets here! (Check out webpack.dev.babel.js and webpack.prod.babel.js if you want to know more) -->
+
+  <script type="text/javascript">
+    var _paq = window._paq || [];
+    _paq.push(['setDomains', ['*.quaidorsay.fr','ambanum.github.io']]);
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    _paq.push([function() {
+      var self = this;
+      function getOriginalVisitorCookieTimeout() {
+        var now = new Date(),
+          nowTs = Math.round(now.getTime() / 1000),
+          visitorInfo = self.getVisitorInfo();
+        var createTs = parseInt(visitorInfo[2]);
+        var cookieTimeout = 13 * 30 * 24 * 60 * 60; // 13 months in seconds
+        var originalTimeout = createTs + cookieTimeout - nowTs;
+        return originalTimeout;
+      }
+      this.setVisitorCookieTimeout(getOriginalVisitorCookieTimeout());
+    }]);
+    (function() {
+      var u='https://stats.data.gouv.fr/';
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', '89']);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <noscript><img src="https://stats.data.gouv.fr/matomo.php?idsite=89&rec=1" style="border:0;" alt="" /></noscript>
+
 </body>
 
 </html>

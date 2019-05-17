@@ -2,7 +2,7 @@
   "app.components.Ad.amountSpent": "Montant dépensé",
   "app.components.Ad.cantDisplayMedia": "Facebook ne nous permet pas d’afficher <abbr title=\"L'API Ad Library indique : Note that you cannot currently download a batch of rendered ads, however you can download ad creative such as images and text for an individual ad. Nous évaluons les modalités d’accès à ce contenu. Aide bienvenue !\">directement</abbr> l’image ou la vidéo présentée avec cette publicité",
   "app.components.Ad.impressions": "Impressions",
-  "app.components.Ad.notSpecifiedSponsor": "Facebook does not specify the funder",
+  "app.components.Ad.notSpecifiedSponsor": "Facebook ne spécifie pas le financeur",
   "app.components.Ad.sponsored": "Sponsorisé",
   "app.components.Ad.sponsoredBy": "Financé par",
   "app.containers.Ads.counter": "{count} publicités <abbr title=\"Nous construisons une interface de classification. D’ici là, nous affichons une sélection aléatoire pour donner un meilleur aperçu du contenu disponible malgré le grand nombre de doublons.\">aléatoires</abbr> ",
