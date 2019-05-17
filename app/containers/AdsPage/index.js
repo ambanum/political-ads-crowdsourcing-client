@@ -161,6 +161,17 @@ export function Ads({
                   />
                 </P>
                 <P>
+                  <Button
+                    color="info"
+                    renderAs="a"
+                    href="/ads/fr/crowdsourcing"
+                  >
+                    <FormattedHTMLMessage
+                      {...messages['description.tryCrowdsourcing']}
+                    />
+                  </Button>
+                </P>
+                <P>
                   <FormattedHTMLMessage
                     {...messages['description.ourWorkParagraph']}
                   />
