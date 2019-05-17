@@ -44,8 +44,11 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/ads/crowdsourcing" component={CrowdsourcingPage} />
-        <Route path="/ads" component={AdsPage} />
+        <Route
+          path="/ads/:country?/crowdsourcing"
+          component={CrowdsourcingPage}
+        />
+        <Route path="/ads/:country?" component={AdsPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
