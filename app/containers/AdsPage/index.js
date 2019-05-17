@@ -72,6 +72,11 @@ const ExplantationHeading = styled(Heading)`
   }
 `;
 
+const ValueProposition = styled.p`
+  text-align: center;
+  margin-bottom: 5em;
+`;
+
 export function Ads({
   ads,
   error,
@@ -114,6 +119,18 @@ export function Ads({
       <Explanation>
         <Section>
           <Container>
+            <ValueProposition>
+              <Button
+                color="info"
+                renderAs="a"
+                href="/ads/fr/crowdsourcing"
+                size="large"
+              >
+                <FormattedHTMLMessage
+                  {...messages['description.tryCrowdsourcing']}
+                />
+              </Button>
+            </ValueProposition>
             <Columns>
               <Columns.Column>
                 <ExplantationHeading size={5} renderAs="h2">
@@ -132,6 +149,8 @@ export function Ads({
                     {...messages['description.whyParagraph']}
                   />
                 </P>
+              </Columns.Column>
+              <Columns.Column>
                 <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.how']} />
                 </ExplantationHeading>
@@ -140,8 +159,6 @@ export function Ads({
                     {...messages['description.howParagraph']}
                   />
                 </P>
-              </Columns.Column>
-              <Columns.Column>
                 <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage
                     {...messages['description.limitations']}
@@ -159,17 +176,6 @@ export function Ads({
                   <FormattedHTMLMessage
                     {...messages['description.moreParagraph']}
                   />
-                </P>
-                <P>
-                  <Button
-                    color="info"
-                    renderAs="a"
-                    href="/ads/fr/crowdsourcing"
-                  >
-                    <FormattedHTMLMessage
-                      {...messages['description.tryCrowdsourcing']}
-                    />
-                  </Button>
                 </P>
                 <P>
                   <FormattedHTMLMessage

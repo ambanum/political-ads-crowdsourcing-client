@@ -92,20 +92,22 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
       <Explanation>
         <Container>
           <Back href="/ads">Retourner à la liste des publicités</Back>
-          <Columns>
-            <Columns.Column>
-              <Heading size={5} renderAs="h2">Lorem</Heading>
-              <p>
-                <FormattedMessage {...messages.dataCollected} />
-              </p>
-            </Columns.Column>
-            <Columns.Column>
-              <Heading size={5} renderAs="h2">Lorem</Heading>
-              <p>
-                <FormattedMessage {...messages.askForData} />
-              </p>
-            </Columns.Column>
-          </Columns>
+          <p>
+            Cette interface permet d'évaluer la légalité de chaque publicité.
+          </p>
+          <p>
+            Évaluez chaque publicité avec les boutons qui l'entourent.
+            <br />
+            Des informations complémentaires sur chacun des cas sont disponibles
+            sur notre{' '}
+            <a
+              target="_blank"
+              href="https://disinfo.quaidorsay.fr/encyclopedia/qualification/tools#criterion-illegal"
+            >
+              encyclopédie collaborative
+            </a>
+            .
+          </p>
         </Container>
       </Explanation>
       <Wrapper>
@@ -128,7 +130,7 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
                   fullwidth
                   outlined
                   disabled={loading}
-                  color="success"
+                  color="primary"
                   onClick={() =>
                     classify(
                       CLASSIFICATION_TYPES.NOT_RELATED_TO_POLITICS_OR_ISSUES_OF_NATIONAL_IMPORTANCE,
@@ -210,6 +212,28 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
                 >
                   <FormattedMessage {...messages.containsSurvey} />
                 </StyledButton>
+              </Columns.Column>
+            </Columns>
+            <Columns>
+              <Columns.Column>
+                <p>
+                  Nous enregistrons votre proposition d'évaluation, la date et
+                  des{' '}
+                  <abbr title="hash salé de l'IP et du user-agent">
+                    éléments d'identification anonyme
+                  </abbr>{' '}
+                  afin de pouvoir effacer d'éventuelles contributions
+                  malveillantes.
+                </p>
+              </Columns.Column>
+              <Columns.Column>
+                <p>
+                  Nous travaillons à rendre lisible les résultats de cette
+                  évaluation, si vous voulez y avoir accès avant,{' '}
+                  <a href="mailto:matti.schneider@diplomatie.gouv.fr">
+                    contactez-nous
+                  </a>
+                </p>
               </Columns.Column>
             </Columns>
           </Container>
