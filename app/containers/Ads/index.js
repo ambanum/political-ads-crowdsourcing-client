@@ -13,7 +13,14 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
 import Ad from 'components/Ad';
 import styled from 'styled-components';
-import { Container, Hero, Section, Heading, Tag } from 'react-bulma-components';
+import {
+  Container,
+  Hero,
+  Section,
+  Heading,
+  Tag,
+  Columns,
+} from 'react-bulma-components';
 import {
   makeSelectAds,
   makeSelectLoading,
@@ -37,8 +44,21 @@ const AdsCollection = styled.div`
   }
 `;
 
+const Explanation = styled.section`
+  background: #f7f7f7;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.45);
+  font-size: 14px;
+`;
+
 const P = styled.p`
-  margin-bottom: 2em;
+  &:not(:last-child) {
+    margin-bottom: 3em;
+  }
+`;
+
+const StyledHeading = styled(Heading)`
+  text-align: center;
 `;
 
 export function Ads({ ads, error, intl, load, loading }) {
@@ -65,46 +85,73 @@ export function Ads({ ads, error, intl, load, loading }) {
       <Hero color="info" gradient size="medium">
         <Hero.Body>
           <Container>
-            <Heading>
+            <StyledHeading>
               <FormattedMessage {...messages.title} />
-            </Heading>
+            </StyledHeading>
           </Container>
         </Hero.Body>
       </Hero>
+      <Explanation>
+        <Section>
+          <Container>
+            <Columns>
+              <Columns.Column>
+                <Heading size={5} renderAs="h2">
+                  <FormattedHTMLMessage {...messages['description.what']} />
+                </Heading>
+                <P>
+                  <FormattedHTMLMessage
+                    {...messages['description.whatParagraph']}
+                  />
+                </P>
+                <Heading size={5} renderAs="h2">
+                  <FormattedHTMLMessage {...messages['description.why']} />
+                </Heading>
+                <P>
+                  <FormattedHTMLMessage
+                    {...messages['description.whyParagraph']}
+                  />
+                </P>
+                <Heading size={5} renderAs="h2">
+                  <FormattedHTMLMessage {...messages['description.how']} />
+                </Heading>
+                <P>
+                  <FormattedHTMLMessage
+                    {...messages['description.howParagraph']}
+                  />
+                </P>
+              </Columns.Column>
+              <Columns.Column>
+                <Heading size={5} renderAs="h2">
+                  <FormattedHTMLMessage
+                    {...messages['description.limitations']}
+                  />
+                </Heading>
+                <P>
+                  <FormattedHTMLMessage
+                    {...messages['description.limitationsParagraph']}
+                  />
+                </P>
+                <Heading size={5} renderAs="h2">
+                  <FormattedHTMLMessage {...messages['description.more']} />
+                </Heading>
+                <P>
+                  <FormattedHTMLMessage
+                    {...messages['description.moreParagraph']}
+                  />
+                </P>
+                <P>
+                  <FormattedHTMLMessage
+                    {...messages['description.ourWorkParagraph']}
+                  />
+                </P>
+              </Columns.Column>
+            </Columns>
+          </Container>
+        </Section>
+      </Explanation>
       <Section>
         <Container>
-          <Heading size={4} renderAs="h2">
-            <FormattedHTMLMessage {...messages['description.what']} />
-          </Heading>
-          <P>
-            <FormattedHTMLMessage {...messages['description.whatParagraph']} />
-          </P>
-          <Heading size={4} renderAs="h2">
-            <FormattedHTMLMessage {...messages['description.why']} />
-          </Heading>
-          <P>
-            <FormattedHTMLMessage {...messages['description.whyParagraph']} />
-          </P>
-          <Heading size={4} renderAs="h2">
-            <FormattedHTMLMessage {...messages['description.how']} />
-          </Heading>
-          <P>
-            <FormattedHTMLMessage {...messages['description.howParagraph']} />
-          </P>
-          <Heading size={4} renderAs="h2">
-            <FormattedHTMLMessage {...messages['description.limitations']} />
-          </Heading>
-          <P>
-            <FormattedHTMLMessage
-              {...messages['description.limitationsParagraph']}
-            />
-          </P>
-          <Heading size={4} renderAs="h2">
-            <FormattedHTMLMessage {...messages['description.more']} />
-          </Heading>
-          <P>
-            <FormattedHTMLMessage {...messages['description.moreParagraph']} />
-          </P>
           {loading && <div className="lds-dual-ring" />}
           {!loading && ads && (
             <Tag size="medium">

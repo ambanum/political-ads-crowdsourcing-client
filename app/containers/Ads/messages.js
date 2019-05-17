@@ -63,4 +63,9 @@ export default defineMessages({
     defaultMessage:
       'Non. Nous sommes en train de consolider et rendre lisibles les conditions légales de publicité politique en France et de construire une interface dédiée pour faciliter l’évaluation de la légalité de chaque publicité. Nous cherchons également activement des partenaires pour déployer ce système dans toute l’Union européenne. Vous savez coder ou traduire&nbsp;? <a href="mailto:matti.schneider@diplomatie.gouv.fr?subject=Ads">Aidez-nous</a>&nbsp;!',
   },
+  'description.ourWorkParagraph': {
+    id: `${scope}.description.ourWorkParagraph`,
+    defaultMessage:
+      'Cet outil fait partie de <a href="http://disinfo.quaidorsay.fr">nos expériences de lutte contre la désinformation.</a>',
+  },
 });
