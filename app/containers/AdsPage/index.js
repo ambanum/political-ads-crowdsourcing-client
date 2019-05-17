@@ -21,6 +21,7 @@ import {
   Heading,
   Tag,
   Columns,
+  Button,
 } from 'react-bulma-components';
 import {
   makeSelectAds,
@@ -46,7 +47,7 @@ const AdsCollection = styled.div`
 `;
 
 const Explanation = styled.section`
-  background: #f7f7f7;
+  background: #fafafa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-top: 1px solid rgba(0, 0, 0, 0.45);
   font-size: 14px;
@@ -54,12 +55,21 @@ const Explanation = styled.section`
 
 const P = styled.p`
   &:not(:last-child) {
-    margin-bottom: 3em;
+    margin-bottom: 1.5em;
   }
 `;
 
 const StyledHeading = styled(Heading)`
   text-align: center;
+`;
+
+const ExplantationHeading = styled(Heading)`
+  &:not(:first-child) {
+    margin-top: 2em;
+  }
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
 `;
 
 export function Ads({
@@ -106,25 +116,25 @@ export function Ads({
           <Container>
             <Columns>
               <Columns.Column>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.what']} />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.whatParagraph']}
                   />
                 </P>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.why']} />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.whyParagraph']}
                   />
                 </P>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.how']} />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.howParagraph']}
@@ -132,19 +142,19 @@ export function Ads({
                 </P>
               </Columns.Column>
               <Columns.Column>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage
                     {...messages['description.limitations']}
                   />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.limitationsParagraph']}
                   />
                 </P>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.more']} />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.moreParagraph']}
