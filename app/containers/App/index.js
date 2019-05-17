@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import AdsPage from 'containers/AdsPage';
+import CrowdsourcingPage from 'containers/CrowdsourcingPage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { Container, Footer } from 'react-bulma-components';
 import styled from 'styled-components';
@@ -43,6 +44,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route path="/ads/crowdsourcing" component={CrowdsourcingPage} />
         <Route path="/ads" component={AdsPage} />
         <Route component={NotFoundPage} />
       </Switch>
