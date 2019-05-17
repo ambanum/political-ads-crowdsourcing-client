@@ -114,6 +114,7 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
             <Columns>
               <Columns.Column size="one-quarter">
                 <StyledButton
+                  tabIndex="0"
                   fullwidth
                   outlined
                   color="success"
@@ -123,6 +124,7 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
                   <FormattedMessage {...messages.nothingSuspect} />
                 </StyledButton>
                 <StyledButton
+                  tabIndex="0"
                   fullwidth
                   outlined
                   disabled={loading}
@@ -136,6 +138,7 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
                   <FormattedMessage {...messages.notRelatedToPolitics} />
                 </StyledButton>
                 <StyledButton
+                  tabIndex="0"
                   fullwidth
                   color="primary"
                   outlined
@@ -172,6 +175,7 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
               </Columns.Column>
               <Columns.Column size="one-quarter">
                 <StyledButton
+                  tabIndex="0"
                   fullwidth
                   outlined
                   disabled={loading}
@@ -183,6 +187,7 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
                   <FormattedMessage {...messages.promotesCandidate} />
                 </StyledButton>
                 <StyledButton
+                  tabIndex="0"
                   fullwidth
                   outlined
                   disabled={loading}
@@ -196,6 +201,7 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
                   <FormattedMessage {...messages.newControversial} />
                 </StyledButton>
                 <StyledButton
+                  tabIndex="0"
                   fullwidth
                   outlined
                   disabled={loading}
