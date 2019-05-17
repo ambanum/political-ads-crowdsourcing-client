@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import linkifyHtml from 'linkifyjs/html';
+import Spinner from 'components/Spinner';
 import messages from './messages';
 import { prettifyImpressions, prettifySpend } from './helpers';
 
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
   border: 1px solid rgba(10, 10, 10, 0.1);
   font-size: 14px;
   break-inside: avoid;
-  background: #FFF;
+  background: #fff;
 `;
 
 const Title = styled.h3`
@@ -74,11 +75,16 @@ const Spend = styled.div``;
 const Number = styled.div`
   font-size: 16px;
   color: #27262b;
+  min-height: 1.5em;
 `;
 
 const MetaDataTitle = styled.span`
   font-size: 12px;
   color: #777;
+`;
+
+const StyledSpinner = styled(Spinner)`
+  margin: 8em auto;
 `;
 
 function Ad({
@@ -91,47 +97,56 @@ function Ad({
   spendLowerBound,
   spendUpperBound,
   currency,
+  loading,
 }) {
   const pageLink = `https://www.facebook.com/${pageId}`;
   return (
     <Wrapper>
-      <Title>
-        <Link href={pageLink} target="_blank">
-          {title}
-        </Link>
-      </Title>
-      <Subtitle>
-        <FormattedMessage {...messages.sponsored} />
-        <React.Fragment>
-          &nbsp;•&nbsp;
-          {fundingEntity && (
-            <React.Fragment>
-              <Light>
-                <FormattedMessage {...messages.sponsoredBy} />
-              </Light>{' '}
-              {fundingEntity}
-            </React.Fragment>
-          )}
-          {!fundingEntity && (
-            <React.Fragment>
-              <Light>
-                <FormattedMessage {...messages.notSpecifiedSponsor} />
-              </Light>
-            </React.Fragment>
-          )}
-        </React.Fragment>
-      </Subtitle>
-      {content && (
-        <div dangerouslySetInnerHTML={{ __html: linkifyHtml(content) }} />
+      {!loading && (
+        <Title>
+          <Link href={pageLink} target="_blank">
+            {title}
+          </Link>
+        </Title>
       )}
-      <Media>
-        <FormattedHTMLMessage {...messages.cantDisplayMedia} />
-      </Media>
+      {!loading && (
+        <Subtitle>
+          <FormattedMessage {...messages.sponsored} />
+          <React.Fragment>
+            &nbsp;•&nbsp;
+            {fundingEntity && (
+              <React.Fragment>
+                <Light>
+                  <FormattedMessage {...messages.sponsoredBy} />
+                </Light>{' '}
+                {fundingEntity}
+              </React.Fragment>
+            )}
+            {!fundingEntity && (
+              <React.Fragment>
+                <Light>
+                  <FormattedMessage {...messages.notSpecifiedSponsor} />
+                </Light>
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        </Subtitle>
+      )}
+      {content && !loading && (
+        <React.Fragment>
+          <div dangerouslySetInnerHTML={{ __html: linkifyHtml(content) }} />
+          <Media>
+            <FormattedHTMLMessage {...messages.cantDisplayMedia} />
+          </Media>
+        </React.Fragment>
+      )}
+      {loading && <StyledSpinner />}
       <Separation />
       <MetaData>
         <Impressions>
           <Number>
-            {prettifyImpressions(impressionsLowerBound, impressionsUpperBound)}
+            {!loading &&
+              prettifyImpressions(impressionsLowerBound, impressionsUpperBound)}
           </Number>
           <MetaDataTitle>
             <FormattedMessage {...messages.impressions} />
@@ -139,7 +154,8 @@ function Ad({
         </Impressions>
         <Spend>
           <Number>
-            {prettifySpend(spendLowerBound, spendUpperBound, currency)}
+            {!loading &&
+              prettifySpend(spendLowerBound, spendUpperBound, currency)}
           </Number>
           <MetaDataTitle>
             <FormattedMessage {...messages.amountSpent} />
@@ -160,6 +176,7 @@ Ad.propTypes = {
   spendLowerBound: PropTypes.string,
   spendUpperBound: PropTypes.string,
   currency: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 export default memo(Ad);
