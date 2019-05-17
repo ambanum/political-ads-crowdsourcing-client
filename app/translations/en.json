@@ -17,6 +17,10 @@
   "app.containers.Ads.description.why": "",
   "app.containers.Ads.description.whyParagraph": "",
   "app.containers.Ads.title": "",
+  "app.containers.App.contactUs": "",
+  "app.containers.App.ourWork": "",
+  "app.containers.App.sourceCode": "",
+  "app.containers.App.values": "",
   "app.containers.HomePage.header": "This is the HomePage container!",
   "app.containers.NotFoundPage.header": "This is the NotFoundPage container!"
 }
