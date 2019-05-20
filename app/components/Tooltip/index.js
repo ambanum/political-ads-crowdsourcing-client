@@ -18,7 +18,7 @@ function Tooltip({ children, content, position }) {
   const pos = position ? `is-tooltip-${position}` : '';
   return (
     <Wrapper
-      className={`tooltip ${pos} is-tooltip-multiline`}
+      className={`tooltip ${pos} is-tooltip-multiline is-tooltip-top-mobile`}
       data-tooltip={content}
     >
       {children}
