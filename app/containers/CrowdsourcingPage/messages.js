@@ -47,7 +47,8 @@ export default defineMessages({
   },
   notRelatedToPoliticsDetails: {
     id: `${scope}.notRelatedToPoliticsDetails`,
-    defaultMessage: "Ne porte pas sur un sujet ou un objet politique. N'a pas non plus pour but d'attirer l'attention sur un sujet de société important, de promouvoir l'action par rapport à ce sujet ou d'influencer l'opinion par rapport à ce sujet en mettant en avant des intérêts particuliers.",
+    defaultMessage:
+      "Ne porte pas sur un sujet ou un objet politique. N'a pas non plus pour but d'attirer l'attention sur un sujet de société important, de promouvoir l'action par rapport à ce sujet ou d'influencer l'opinion par rapport à ce sujet en mettant en avant des intérêts particuliers.",
   },
   cantSay: {
     id: `${scope}.cantSay`,
@@ -55,7 +56,8 @@ export default defineMessages({
   },
   cantSayDetails: {
     id: `${scope}.cantSayDetails`,
-    defaultMessage: "Les élements fournis dans cette publicité ne sont pas suffisants pour permettre d'identifier clairement un sujet (exemple: la politique), un objet (exemple: une personne ou un parti) et/ou une intention (promotion, critique, volonté de nuire).",
+    defaultMessage:
+      "Les élements fournis dans cette publicité ne sont pas suffisants pour permettre d'identifier clairement un sujet (exemple: la politique), un objet (exemple: une personne ou un parti) et/ou une intention (promotion, critique, volonté de nuire).",
   },
   displayNewAd: {
     id: `${scope}.displayNewAd`,

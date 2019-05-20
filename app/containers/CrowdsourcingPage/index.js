@@ -125,7 +125,6 @@ export function CrowdsourcingPage({
             <Columns>
               <StyledColumn size="one-quarter">
                 <Tooltip
-                  position="right"
                   content={intl.messages[messages.nothingSuspectDetails.id]}
                 >
                   <StyledButton
@@ -142,7 +141,6 @@ export function CrowdsourcingPage({
                   </StyledButton>
                 </Tooltip>
                 <Tooltip
-                  position="right"
                   content={
                     intl.messages[messages.notRelatedToPoliticsDetails.id]
                   }
@@ -162,10 +160,7 @@ export function CrowdsourcingPage({
                     <FormattedMessage {...messages.notRelatedToPolitics} />
                   </StyledButton>
                 </Tooltip>
-                <Tooltip
-                  position="right"
-                  content={intl.messages[messages.cantSayDetails.id]}
-                >
+                <Tooltip content={intl.messages[messages.cantSayDetails.id]}>
                   <StyledButton
                     tabIndex="0"
                     fullwidth
@@ -205,7 +200,6 @@ export function CrowdsourcingPage({
               </Columns.Column>
               <Columns.Column size="one-quarter">
                 <Tooltip
-                  position="left"
                   content={intl.messages[messages.promotesCandidateDetails.id]}
                 >
                   <StyledButton
@@ -222,7 +216,6 @@ export function CrowdsourcingPage({
                   </StyledButton>
                 </Tooltip>
                 <Tooltip
-                  position="left"
                   content={intl.messages[messages.newControversialDetails.id]}
                 >
                   <StyledButton
@@ -241,7 +234,6 @@ export function CrowdsourcingPage({
                   </StyledButton>
                 </Tooltip>
                 <Tooltip
-                  position="left"
                   content={intl.messages[messages.containsSurveyDetails.id]}
                 >
                   <StyledButton
