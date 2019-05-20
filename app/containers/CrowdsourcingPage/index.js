@@ -2,13 +2,14 @@ import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import Ad from 'components/Ad';
+import Tooltip from 'components/Tooltip';
 import styled from 'styled-components';
 import {
   Container,
@@ -57,7 +58,14 @@ const Back = styled.a`
   margin-bottom: 1em;
 `;
 
-export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
+export function CrowdsourcingPage({
+  error,
+  load,
+  ad,
+  loading,
+  classify,
+  intl,
+}) {
   useInjectReducer({ key: 'crowdsourcingPage', reducer });
   useInjectSaga({ key: 'crowdsourcingPage', saga });
 
@@ -93,7 +101,8 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
         <Container>
           <Back href="/ads">Retourner à la liste des publicités</Back>
           <p>
-            Cette interface permet d'évaluer la légalité de chaque publicité. Évaluez chaque publicité avec les boutons qui l'entourent.
+            Cette interface permet d'évaluer la légalité de chaque publicité.
+            Évaluez chaque publicité avec les boutons qui l'entourent.
           </p>
           <p>
             Des informations complémentaires sur chacun des cas sont disponibles
@@ -113,40 +122,59 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
           <Container>
             <Columns>
               <Columns.Column size="one-quarter">
-                <StyledButton
-                  tabIndex="0"
-                  fullwidth
-                  outlined
-                  color="success"
-                  disabled={loading}
-                  onClick={() => classify(CLASSIFICATION_TYPES.NOTHING_SUSPECT)}
+                <Tooltip
+                  position="right"
+                  content={intl.messages[messages.nothingSuspectDetails.id]}
                 >
-                  <FormattedMessage {...messages.nothingSuspect} />
-                </StyledButton>
-                <StyledButton
-                  tabIndex="0"
-                  fullwidth
-                  outlined
-                  disabled={loading}
-                  color="primary"
-                  onClick={() =>
-                    classify(
-                      CLASSIFICATION_TYPES.NOT_RELATED_TO_POLITICS_OR_ISSUES_OF_NATIONAL_IMPORTANCE,
-                    )
+                  <StyledButton
+                    tabIndex="0"
+                    fullwidth
+                    outlined
+                    color="success"
+                    disabled={loading}
+                    onClick={() =>
+                      classify(CLASSIFICATION_TYPES.NOTHING_SUSPECT)
+                    }
+                  >
+                    <FormattedMessage {...messages.nothingSuspect} />
+                  </StyledButton>
+                </Tooltip>
+                <Tooltip
+                  position="right"
+                  content={
+                    intl.messages[messages.notRelatedToPoliticsDetails.id]
                   }
                 >
-                  <FormattedMessage {...messages.notRelatedToPolitics} />
-                </StyledButton>
-                <StyledButton
-                  tabIndex="0"
-                  fullwidth
-                  color="primary"
-                  outlined
-                  disabled={loading}
-                  onClick={() => classify(CLASSIFICATION_TYPES.CANT_SAY)}
+                  <StyledButton
+                    tabIndex="0"
+                    fullwidth
+                    outlined
+                    disabled={loading}
+                    color="primary"
+                    onClick={() =>
+                      classify(
+                        CLASSIFICATION_TYPES.NOT_RELATED_TO_POLITICS_OR_ISSUES_OF_NATIONAL_IMPORTANCE,
+                      )
+                    }
+                  >
+                    <FormattedMessage {...messages.notRelatedToPolitics} />
+                  </StyledButton>
+                </Tooltip>
+                <Tooltip
+                  position="right"
+                  content={intl.messages[messages.cantSayDetails.id]}
                 >
-                  <FormattedMessage {...messages.cantSay} />
-                </StyledButton>
+                  <StyledButton
+                    tabIndex="0"
+                    fullwidth
+                    color="primary"
+                    outlined
+                    disabled={loading}
+                    onClick={() => classify(CLASSIFICATION_TYPES.CANT_SAY)}
+                  >
+                    <FormattedMessage {...messages.cantSay} />
+                  </StyledButton>
+                </Tooltip>
               </Columns.Column>
               <Columns.Column size="half">
                 <React.Fragment>
@@ -174,42 +202,57 @@ export function CrowdsourcingPage({ error, load, ad, loading, classify }) {
                 </LoadNewAdWrapper>
               </Columns.Column>
               <Columns.Column size="one-quarter">
-                <StyledButton
-                  tabIndex="0"
-                  fullwidth
-                  outlined
-                  disabled={loading}
-                  color="danger"
-                  onClick={() =>
-                    classify(CLASSIFICATION_TYPES.PROMOTES_A_CANDIDATE)
-                  }
+                <Tooltip
+                  position="left"
+                  content={intl.messages[messages.promotesCandidateDetails.id]}
                 >
-                  <FormattedMessage {...messages.promotesCandidate} />
-                </StyledButton>
-                <StyledButton
-                  tabIndex="0"
-                  fullwidth
-                  outlined
-                  disabled={loading}
-                  color="danger"
-                  onClick={() =>
-                    classify(
-                      CLASSIFICATION_TYPES.INTRODUCES_OF_A_NEW_CONTROVERSIAL_ELEMENT,
-                    )
-                  }
+                  <StyledButton
+                    tabIndex="0"
+                    fullwidth
+                    outlined
+                    disabled={loading}
+                    color="danger"
+                    onClick={() =>
+                      classify(CLASSIFICATION_TYPES.PROMOTES_A_CANDIDATE)
+                    }
+                  >
+                    <FormattedMessage {...messages.promotesCandidate} />
+                  </StyledButton>
+                </Tooltip>
+                <Tooltip
+                  position="left"
+                  content={intl.messages[messages.newControversialDetails.id]}
                 >
-                  <FormattedMessage {...messages.newControversial} />
-                </StyledButton>
-                <StyledButton
-                  tabIndex="0"
-                  fullwidth
-                  outlined
-                  disabled={loading}
-                  color="danger"
-                  onClick={() => classify(CLASSIFICATION_TYPES.SURVEY)}
+                  <StyledButton
+                    tabIndex="0"
+                    fullwidth
+                    outlined
+                    disabled={loading}
+                    color="danger"
+                    onClick={() =>
+                      classify(
+                        CLASSIFICATION_TYPES.INTRODUCES_OF_A_NEW_CONTROVERSIAL_ELEMENT,
+                      )
+                    }
+                  >
+                    <FormattedMessage {...messages.newControversial} />
+                  </StyledButton>
+                </Tooltip>
+                <Tooltip
+                  position="left"
+                  content={intl.messages[messages.containsSurveyDetails.id]}
                 >
-                  <FormattedMessage {...messages.containsSurvey} />
-                </StyledButton>
+                  <StyledButton
+                    tabIndex="0"
+                    fullwidth
+                    outlined
+                    disabled={loading}
+                    color="danger"
+                    onClick={() => classify(CLASSIFICATION_TYPES.SURVEY)}
+                  >
+                    <FormattedMessage {...messages.containsSurvey} />
+                  </StyledButton>
+                </Tooltip>
               </Columns.Column>
             </Columns>
             <Columns>
@@ -247,6 +290,7 @@ CrowdsourcingPage.propTypes = {
   ad: PropTypes.object,
   loading: PropTypes.bool,
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
+  intl: intlShape.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -270,4 +314,4 @@ const withConnect = connect(
 export default compose(
   withConnect,
   memo,
-)(CrowdsourcingPage);
+)(injectIntl(CrowdsourcingPage));
