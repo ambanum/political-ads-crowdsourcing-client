@@ -77,6 +77,11 @@ const ValueProposition = styled.p`
   margin-bottom: 5em;
 `;
 
+const MainActionButton = styled(Button)`
+  white-space: normal;
+  height: auto;
+`;
+
 export function Ads({
   ads,
   error,
@@ -120,7 +125,7 @@ export function Ads({
         <Section>
           <Container>
             <ValueProposition>
-              <Button
+              <MainActionButton
                 color="info"
                 renderAs="a"
                 href="/ads/fr/crowdsourcing"
@@ -129,7 +134,7 @@ export function Ads({
                 <FormattedHTMLMessage
                   {...messages['description.tryCrowdsourcing']}
                 />
-              </Button>
+              </MainActionButton>
             </ValueProposition>
             <Columns>
               <Columns.Column>
