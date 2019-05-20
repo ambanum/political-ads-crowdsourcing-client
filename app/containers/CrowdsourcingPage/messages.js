@@ -13,15 +13,24 @@ export default defineMessages({
     id: `${scope}.header`,
     defaultMessage: 'Évaluation de la légalité des publicités',
   },
+  back: {
+    id: `${scope}.back`,
+    defaultMessage: 'Retourner à la liste des publicités',
+  },
+  explanation: {
+    id: `${scope}.explanation`,
+    defaultMessage:
+      'Cette interface permet d\'évaluer la légalité de chaque publicité. Évaluez chaque publicité avec les boutons qui l\'entourent.<br />Des informations complémentaires sur chacun des cas sont disponibles sur notre <a target="_blank" href="https://disinfo.quaidorsay.fr/encyclopedia/qualification/tools#criterion-illegal">encyclopédie collaborative</a>.',
+  },
   dataCollected: {
     id: `${scope}.dataCollected`,
     defaultMessage:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      "Nous enregistrons votre proposition d'évaluation, la date et des <abbr title=\"hash salé de l'IP et du user-agent\">éléments d'identification anonymes </abbr> afin de pouvoir effacer d'éventuelles contributions malveillantes.",
   },
   askForData: {
     id: `${scope}.askForData`,
     defaultMessage:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Nous travaillons à rendre lisibles les résultats de cette évaluation, si vous voulez y avoir accès avant, <a href="mailto:matti.schneider@diplomatie.gouv.fr">contactez-nous.</a>',
   },
   nothingSuspect: {
     id: `${scope}.nothingSuspect`,

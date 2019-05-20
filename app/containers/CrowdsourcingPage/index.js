@@ -2,7 +2,12 @@ import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { injectIntl, intlShape, FormattedMessage } from 'react-intl';
+import {
+  injectIntl,
+  intlShape,
+  FormattedMessage,
+  FormattedHTMLMessage,
+} from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -85,8 +90,8 @@ export function CrowdsourcingPage({
   return (
     <React.Fragment>
       <Helmet>
-        <title>CrowdsourcingPage</title>
-        <meta name="description" content="Description of CrowdsourcingPage" />
+        <title>{intl.messages[messages.header.id]}</title>
+        <meta name="description" content={intl.messages[messages.header.id]} />
       </Helmet>
       <Hero color="info" gradient>
         <Hero.Body>
@@ -99,21 +104,11 @@ export function CrowdsourcingPage({
       </Hero>
       <Explanation>
         <Container>
-          <Back href="/ads">Retourner à la liste des publicités</Back>
+          <Back href="/ads">
+            <FormattedMessage {...messages.back} />
+          </Back>
           <p>
-            Cette interface permet d'évaluer la légalité de chaque publicité.
-            Évaluez chaque publicité avec les boutons qui l'entourent.
-          </p>
-          <p>
-            Des informations complémentaires sur chacun des cas sont disponibles
-            sur notre{' '}
-            <a
-              target="_blank"
-              href="https://disinfo.quaidorsay.fr/encyclopedia/qualification/tools#criterion-illegal"
-            >
-              encyclopédie collaborative
-            </a>
-            .
+            <FormattedHTMLMessage {...messages.explanation} />
           </p>
         </Container>
       </Explanation>
@@ -257,24 +252,10 @@ export function CrowdsourcingPage({
             </Columns>
             <Columns>
               <Columns.Column>
-                <p>
-                  Nous enregistrons votre proposition d'évaluation, la date et
-                  des{' '}
-                  <abbr title="hash salé de l'IP et du user-agent">
-                    éléments d'identification anonymes
-                  </abbr>{' '}
-                  afin de pouvoir effacer d'éventuelles contributions
-                  malveillantes.
-                </p>
+                <FormattedHTMLMessage {...messages.dataCollected} />
               </Columns.Column>
               <Columns.Column>
-                <p>
-                  Nous travaillons à rendre lisibles les résultats de cette
-                  évaluation, si vous voulez y avoir accès avant,{' '}
-                  <a href="mailto:matti.schneider@diplomatie.gouv.fr">
-                    contactez-nous.
-                  </a>
-                </p>
+                <FormattedHTMLMessage {...messages.askForData} />
               </Columns.Column>
             </Columns>
           </Container>
