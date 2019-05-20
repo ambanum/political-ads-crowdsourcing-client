@@ -12,6 +12,7 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { createStructuredSelector } from 'reselect';
 import Ad from 'components/Ad';
+import Spinner from 'components/Spinner';
 import styled from 'styled-components';
 import {
   Container,
@@ -20,13 +21,14 @@ import {
   Heading,
   Tag,
   Columns,
+  Button,
 } from 'react-bulma-components';
 import {
   makeSelectAds,
   makeSelectLoading,
   makeSelectError,
 } from '../App/selectors';
-import { loadAds } from '../App/actions';
+import { loadAds } from './actions';
 import saga from './saga';
 import messages from './messages';
 
@@ -45,7 +47,7 @@ const AdsCollection = styled.div`
 `;
 
 const Explanation = styled.section`
-  background: #f7f7f7;
+  background: #fafafa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   border-top: 1px solid rgba(0, 0, 0, 0.45);
   font-size: 14px;
@@ -53,7 +55,7 @@ const Explanation = styled.section`
 
 const P = styled.p`
   &:not(:last-child) {
-    margin-bottom: 3em;
+    margin-bottom: 1.5em;
   }
 `;
 
@@ -61,7 +63,35 @@ const StyledHeading = styled(Heading)`
   text-align: center;
 `;
 
-export function Ads({ ads, error, intl, load, loading }) {
+const ExplantationHeading = styled(Heading)`
+  &:not(:first-child) {
+    margin-top: 2em;
+  }
+  &:not(:last-child) {
+    margin-bottom: 1em;
+  }
+`;
+
+const ValueProposition = styled.p`
+  text-align: center;
+  margin-bottom: 5em;
+`;
+
+const MainActionButton = styled(Button)`
+  white-space: normal;
+  height: auto;
+`;
+
+export function Ads({
+  ads,
+  error,
+  intl,
+  load,
+  loading,
+  match: {
+    params: { country },
+  },
+}) {
   useInjectSaga({ key: 'ads', saga });
   useEffect(() => {
     if (error) {
@@ -69,7 +99,7 @@ export function Ads({ ads, error, intl, load, loading }) {
     }
 
     if (!ads && !error) {
-      load();
+      load({ country });
     }
   });
 
@@ -94,47 +124,59 @@ export function Ads({ ads, error, intl, load, loading }) {
       <Explanation>
         <Section>
           <Container>
+            <ValueProposition>
+              <MainActionButton
+                color="info"
+                renderAs="a"
+                href="/ads/fr/crowdsourcing"
+                size="large"
+              >
+                <FormattedHTMLMessage
+                  {...messages['description.tryCrowdsourcing']}
+                />
+              </MainActionButton>
+            </ValueProposition>
             <Columns>
               <Columns.Column>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.what']} />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.whatParagraph']}
                   />
                 </P>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.why']} />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.whyParagraph']}
                   />
                 </P>
-                <Heading size={5} renderAs="h2">
+              </Columns.Column>
+              <Columns.Column>
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.how']} />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.howParagraph']}
                   />
                 </P>
-              </Columns.Column>
-              <Columns.Column>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage
                     {...messages['description.limitations']}
                   />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.limitationsParagraph']}
                   />
                 </P>
-                <Heading size={5} renderAs="h2">
+                <ExplantationHeading size={5} renderAs="h2">
                   <FormattedHTMLMessage {...messages['description.more']} />
-                </Heading>
+                </ExplantationHeading>
                 <P>
                   <FormattedHTMLMessage
                     {...messages['description.moreParagraph']}
@@ -152,7 +194,7 @@ export function Ads({ ads, error, intl, load, loading }) {
       </Explanation>
       <Section>
         <Container>
-          {loading && <div className="lds-dual-ring" />}
+          {loading && <Spinner />}
           {!loading && ads && (
             <Tag size="medium">
               {ads && (
@@ -168,9 +210,9 @@ export function Ads({ ads, error, intl, load, loading }) {
           {!loading && ads && (
             <AdsCollection>
               {ads &&
-                ads.map((ad, index) => (
+                ads.map(ad => (
                   <Ad
-                    key={index}
+                    key={ad.id}
                     title={ad.page_name}
                     content={ad.ad_creative_body}
                     pageId={ad.page_id}
@@ -200,6 +242,7 @@ Ads.propTypes = {
   error: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   intl: intlShape.isRequired,
   loading: PropTypes.bool,
+  match: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -210,7 +253,7 @@ const mapStateToProps = createStructuredSelector({
 
 function mapDispatchToProps(dispatch) {
   return {
-    load: () => dispatch(loadAds()),
+    load: options => dispatch(loadAds(options)),
   };
 }
 

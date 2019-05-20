@@ -68,4 +68,8 @@ export default defineMessages({
     defaultMessage:
       'Cet outil fait partie de <a href="http://disinfo.quaidorsay.fr">nos expériences de lutte contre la désinformation.</a>',
   },
+  'description.tryCrowdsourcing': {
+    id: `${scope}.description.tryCrowdsourcing`,
+    defaultMessage: "Essayer l'interface d'évaluation de la légalité",
+  },
 });
