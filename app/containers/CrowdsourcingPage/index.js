@@ -63,6 +63,13 @@ const Back = styled.a`
   margin-bottom: 1em;
 `;
 
+const StyledColumn = styled(Columns.Column)`
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+`;
+
 export function CrowdsourcingPage({
   error,
   load,
@@ -116,7 +123,7 @@ export function CrowdsourcingPage({
         <Section>
           <Container>
             <Columns>
-              <Columns.Column size="one-quarter">
+              <StyledColumn size="one-quarter">
                 <Tooltip
                   position="right"
                   content={intl.messages[messages.nothingSuspectDetails.id]}
@@ -170,7 +177,7 @@ export function CrowdsourcingPage({
                     <FormattedMessage {...messages.cantSay} />
                   </StyledButton>
                 </Tooltip>
-              </Columns.Column>
+              </StyledColumn>
               <Columns.Column size="half">
                 <React.Fragment>
                   <Ad
