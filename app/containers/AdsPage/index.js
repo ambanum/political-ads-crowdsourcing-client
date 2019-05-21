@@ -154,6 +154,11 @@ export function Ads({
                     {...messages['description.whyParagraph']}
                   />
                 </P>
+                <P>
+                  <FormattedHTMLMessage
+                    {...messages['description.dumpAccess']}
+                  />
+                </P>
               </Columns.Column>
               <Columns.Column>
                 <ExplantationHeading size={5} renderAs="h2">
