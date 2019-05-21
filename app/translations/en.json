@@ -6,6 +6,7 @@
   "app.components.Ad.sponsored": "Sponsored",
   "app.components.Ad.sponsoredBy": "Funded by",
   "app.containers.Ads.counter": "{count} ads <abbr title=\"We are building a classification interface. In the meantime, we are displaying a random selection to give a better overview of the available content despite the large number of duplicates.\">random</abbr>",
+  "app.containers.Ads.description.dumpAccess": "",
   "app.containers.Ads.description.how": "How does it work?",
   "app.containers.Ads.description.howParagraph": "We download all ads via the <a href=\"https://www.facebook.com/ads/library/api\">API Facebook</a> and we make them visible here. Everything <a href=\"https://github.com/ambanum/political-ads-legality\">our code</a> is free and your improvements are welcome&nbsp;!",
   "app.containers.Ads.description.limitations": "What are the limits&nbsp;?",

@@ -34,7 +34,12 @@ export default defineMessages({
   'description.whyParagraph': {
     id: `${scope}.description.whyParagraph`,
     defaultMessage:
-      'Facebook permet depuis début mai d\'interroger sa <a href="https://www.facebook.com/ads/library">bibliothèque publicitaire</a> pour accéder aux publicités politiques et liées à des débats d’intérêt général qui ont été diffusées sur Facebook ou Instagram dans l’Union européenne. Malheureusement, l’accès à ces publicités n’est possible que par une recherche précise, ou par un moyen qui nécessite de savoir coder (une <a href="https://www.facebook.com/ads/library/api">API</a>). Qui plus est, l’accès à cette API n’est possible qu’avec un compte Facebook dont l’identité a été validée par l’envoi d’une pièce d’identité à Facebook.<br>Pour certains pays, Facebook fournit un <a href="https://www.facebook.com/ads/library/report/?source=archive-landing-page&country=GB">rapport détaillé</a> accessible publiquement, mais celui-ci n’existe pas encore pour les pays de l\'Union européenne à part le Royaume-Uni.<br>Nous souhaitons rendre disponible ces publicités à tou‧te‧s les citoyen‧ne‧s afin que chacun‧e puisse s\'assurer de leur légalité.',
+      "Facebook permet depuis début mai d'interroger sa bibliothèque publicitaire pour accéder aux publicités politiques et liées à des débats d’intérêt général et fournit un <a href=\"https://www.facebook.com/ads/library/report/\">rapport détaillé</a> pour chaque pays de l’Union européenne. Néanmoins cette évaluation est aujourd’hui intégralement déléguée à des acteurs privés, et il semble important de les aider à caractériser au mieux ce qui relève du débat politique ou « d’intérêt général ».<br /> Nous souhaitons ici permettre à tou‧te‧s les citoyen‧ne‧s de s'assurer que la propagande électorale respecte les règles.<br /> De plus, en stockant ces données indépendamment de leur fournisseur nous en garantissons l'intégrité dans le temps.",
+  },
+  'description.dumpAccess': {
+    id: `${scope}.description.dumpAccess`,
+    defaultMessage:
+      'Nous mettons également à disposition l\'ensemble des <a target="_blank" href="https://disinfo.quaidorsay.fr/ads/dumps/">publicités que nous avons collectées pour chaque pays de l\'union européenne</a> sous la forme de jeux de données au format JSON afin d\'en permettre la réutilisation le plus simplement possible.',
   },
   'description.how': {
     id: `${scope}.description.how`,
