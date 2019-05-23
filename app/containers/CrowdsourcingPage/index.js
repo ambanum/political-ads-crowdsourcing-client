@@ -71,7 +71,7 @@ const StyledButton = styled(Button)`
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px 0px,
     rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 3px 3px -2px;
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 768px) {
     min-height: 3em;
     padding-left: 1em;
     padding-right: 1em;
@@ -92,7 +92,7 @@ const HelpWrapper = styled.div`
     font-size: 70%;
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: 768px) {
     height: 100%;
     width: 40px;
 
@@ -127,6 +127,12 @@ const HeadContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    text-align: center;
+  }
 `;
 
 const Link = styled.a`
@@ -136,8 +142,8 @@ const Link = styled.a`
   color: #fff !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 
-  & {
-    position: relative;
+  &:not(:last-child) {
+    margin-right: 1em;
   }
 
   &::before {
@@ -206,6 +212,11 @@ const Counters = styled.div`
   font-size: 200%;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
   display: flex;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 1em;
+    justify-content: center;
+  }
 `;
 
 const Separator = styled.span`
@@ -296,7 +307,6 @@ export function CrowdsourcingPage({
                 <Link href="/ads">
                   <FormattedMessage {...messages.back} />
                 </Link>
-                &nbsp; &nbsp;
                 <Link
                   href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdisinfo.quaidorsay.fr%2Fads%2Fcrowdsourcing"
                   target="_blank"
@@ -305,7 +315,6 @@ export function CrowdsourcingPage({
                   <i className="icon-fontello icon-fontello-facebook" />
                   &nbsp;<FormattedMessage {...messages.shareFriends} />
                 </Link>
-                &nbsp; &nbsp;
                 <Link
                   href="https://twitter.com/intent/tweet/?text=Plusieurs%20milliers%20de%20%23publicit%C3%A9s%20politiques%20ont%20%C3%A9t%C3%A9%20diffus%C3%A9es%20pendant%20les%20%23EUElections2019.%20Certaines%20sont%20peut-%C3%AAtre%20ill%C3%A9gales.%20Trouvez-les%20!%20%F0%9F%91%80%20%23crowdsourcing&amp;url=https%3A%2F%2Fdisinfo.quaidorsay.fr%2Fads%2Fcrowdsourcing"
                   target="_blank"
