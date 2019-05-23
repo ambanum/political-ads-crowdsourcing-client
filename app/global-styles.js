@@ -1,3 +1,4 @@
+import './fonts/fontello.css';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
