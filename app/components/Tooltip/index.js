@@ -15,6 +15,7 @@ function Tooltip({ children, content }) {
       hideDelay="0"
       duration="200"
       size="small"
+      theme="light"
     >
       {children}
     </Tippy>
@@ -24,7 +25,6 @@ function Tooltip({ children, content }) {
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.string.isRequired,
-  position: PropTypes.string,
 };
 
 export default memo(Tooltip);
