@@ -11,7 +11,6 @@ function Tooltip({ children, content, ...othersProps }) {
       trigger="mouseenter"
       touchHold
       arrow
-      delay="300"
       hideDelay="0"
       duration="200"
       size="small"
