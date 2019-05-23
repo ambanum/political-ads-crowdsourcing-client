@@ -98,10 +98,11 @@ function Ad({
   spendUpperBound,
   currency,
   loading,
+  className,
 }) {
   const pageLink = `https://www.facebook.com/${pageId}`;
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       {!loading && (
         <Title>
           <Link href={pageLink} target="_blank">
