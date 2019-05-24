@@ -36,6 +36,12 @@ import saga from './saga';
 import messages from './messages';
 import { CLASSIFICATION_TYPES } from './constants';
 
+function checkNested(obj, level, ...rest) {
+  if (obj === undefined) return false;
+  if (rest.length == 0 && obj.hasOwnProperty(level)) return true;
+  return checkNested(obj[level], ...rest);
+}
+
 const Title = styled(Heading)`
   text-align: center;
   font-weight: 900;
@@ -127,7 +133,6 @@ const HeadContainer = styled(Container)`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-
 
   @media screen and (max-width: 768px) {
     display: block;
@@ -304,7 +309,7 @@ export function CrowdsourcingPage({
           <HeadSection>
             <HeadContainer>
               <ShareContainer>
-                <Link href="/ads">
+                <Link href="/political-ads">
                   <FormattedMessage {...messages.back} />
                 </Link>
                 <Link
@@ -313,7 +318,8 @@ export function CrowdsourcingPage({
                   rel="noopener"
                 >
                   <i className="icon-fontello icon-fontello-facebook" />
-                  &nbsp;<FormattedMessage {...messages.shareFriends} />
+                  &nbsp;
+                  <FormattedMessage {...messages.shareFriends} />
                 </Link>
                 <Link
                   href="https://twitter.com/intent/tweet/?text=Plusieurs%20milliers%20de%20%23publicit%C3%A9s%20politiques%20ont%20%C3%A9t%C3%A9%20diffus%C3%A9es%20pendant%20les%20%23EUElections2019.%20Certaines%20sont%20peut-%C3%AAtre%20ill%C3%A9gales.%20Trouvez-les%20!%20%F0%9F%91%80%20%23crowdsourcing&amp;url=https%3A%2F%2Fdisinfo.quaidorsay.fr%2Fads%2Fcrowdsourcing"
@@ -321,7 +327,8 @@ export function CrowdsourcingPage({
                   rel="noopener"
                 >
                   <i className="icon-fontello icon-fontello-twitter" />
-                  &nbsp;<FormattedMessage {...messages.shareCommunity} />
+                  &nbsp;
+                  <FormattedMessage {...messages.shareCommunity} />
                 </Link>
               </ShareContainer>
               {counts.annotationsCount && counts.adsCount && (
@@ -447,6 +454,23 @@ export function CrowdsourcingPage({
                       spendLowerBound={ad.spend && ad.spend.lower_bound}
                       spendUpperBound={ad.spend && ad.spend.upper_bound}
                       currency={ad.currency}
+                      snapshot={ad.snapshot}
+                      ctaLink={
+                        checkNested(
+                          ad,
+                          'snapshot',
+                          'react_component',
+                          'props',
+                          'adCard',
+                          'snapshot',
+                          'link_url',
+                        ) &&
+                        ad.snapshot.react_component.props.adCard.snapshot
+                          .link_url
+                      }
+                      ctaTitle={ad.ad_creative_link_title}
+                      ctaDescription={ad.ad_creative_link_description}
+                      ctaLinkDomain={ad.ad_creative_link_caption}
                     />
                   </React.Fragment>
                   <LoadNewAdWrapper>

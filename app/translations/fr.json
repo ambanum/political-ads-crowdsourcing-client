@@ -34,7 +34,7 @@
   "app.containers.CrowdsourcingPage.dataCollected": "En plus de votre proposition d'évaluation, nous enregistrons la date et des <abbr title=\"hash salé de l'IP et du user-agent\">éléments d'identification anonymes </abbr> afin de pouvoir effacer d'éventuelles contributions malveillantes.",
   "app.containers.CrowdsourcingPage.dataCollectedInfo": "Données collectées",
   "app.containers.CrowdsourcingPage.displayNewAd": "Afficher une autre publicité",
-  "app.containers.CrowdsourcingPage.evaluated": "Évaluées",
+  "app.containers.CrowdsourcingPage.evaluated": "Évaluations",
   "app.containers.CrowdsourcingPage.explanation": "Ces publicités ont été diffusées pendant la campagne électorale européenne. Certaines sont peut-être illégales&nbsp;!<br /> En les classant, vous aidez par exemple à identifier de potentielles ingérences étrangères.",
   "app.containers.CrowdsourcingPage.header": "Quel est l’objet de cette publicité&nbsp;?",
   "app.containers.CrowdsourcingPage.newControversial": "Faire des révélations",
