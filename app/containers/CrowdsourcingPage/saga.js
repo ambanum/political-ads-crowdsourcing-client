@@ -44,7 +44,7 @@ export function* getCounts() {
 export function* classifyAd(action) {
   try {
     const ad = yield select(makeSelectAd());
-    yield request(`${GLOBAL_CONFIG.apiUrl}/ads/${ad.id}/annotation`, {
+    yield request(`${GLOBAL_CONFIG.apiUrl}/political-ads/${ad.id}/annotation`, {
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       method: 'POST',
       body: JSON.stringify({

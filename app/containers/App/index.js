@@ -45,10 +45,10 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route
-          path="/ads/:country?/crowdsourcing"
+          path="/political-ads/:country?/crowdsourcing"
           component={CrowdsourcingPage}
         />
-        <Route path="/ads/:country?" component={AdsPage} />
+        <Route path="/political-ads/:country?" component={AdsPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />

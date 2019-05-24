@@ -282,7 +282,7 @@ export function CrowdsourcingPage({
 
   // eslint-disable-next-line no-param-reassign
   ad = ad || {};
-  console.log(counts);
+
   useEffect(() => {
     if (error) {
       console.log(error);

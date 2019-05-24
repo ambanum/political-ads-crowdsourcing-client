@@ -128,7 +128,7 @@ export function Ads({
               <MainActionButton
                 color="info"
                 renderAs="a"
-                href="/ads/fr/crowdsourcing"
+                href="/political-ads/fr/crowdsourcing"
                 size="large"
               >
                 <FormattedHTMLMessage
