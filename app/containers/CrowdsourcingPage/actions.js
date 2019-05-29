@@ -2,9 +2,6 @@ import {
   LOAD_AD,
   LOAD_AD_SUCCESS,
   LOAD_AD_ERROR,
-  LOAD_COUNTS,
-  LOAD_COUNTS_SUCCESS,
-  LOAD_COUNTS_ERROR,
   CLASSIFY_AD,
   CLASSIFY_AD_SUCCESS,
   CLASSIFY_AD_ERROR,
@@ -27,28 +24,6 @@ export function adLoaded(ad) {
 export function adLoadingError(error) {
   return {
     type: LOAD_AD_ERROR,
-    error,
-  };
-}
-
-export function loadCounts(options) {
-  return {
-    type: LOAD_COUNTS,
-    options,
-  };
-}
-
-export function countsLoaded({ adsCount, annotationsCount }) {
-  return {
-    type: LOAD_COUNTS_SUCCESS,
-    adsCount,
-    annotationsCount,
-  };
-}
-
-export function countsLoadingError(error) {
-  return {
-    type: LOAD_COUNTS_ERROR,
     error,
   };
 }

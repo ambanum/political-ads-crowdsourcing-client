@@ -29,9 +29,16 @@ const makeSelectAds = () =>
     globalState => globalState.ads,
   );
 
+const makeSelectCounts = () =>
+  createSelector(
+    selectGlobal,
+    substate => substate.counts,
+  );
+
 export {
   makeSelectLocation,
   makeSelectLoading,
   makeSelectError,
   makeSelectAds,
+  makeSelectCounts,
 };

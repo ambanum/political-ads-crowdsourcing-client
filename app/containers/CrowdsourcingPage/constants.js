@@ -1,12 +1,9 @@
 export const LOAD_AD = 'Ads/App/LOAD_AD';
-export const LOAD_AD_SUCCESS = 'boilerplate/App/LOAD_AD_SUCCESS';
-export const LOAD_AD_ERROR = 'boilerplate/App/LOAD_AD_ERROR';
-export const LOAD_COUNTS = 'Ads/App/LOAD_COUNTS';
-export const LOAD_COUNTS_SUCCESS = 'boilerplate/App/LOAD_COUNTS_SUCCESS';
-export const LOAD_COUNTS_ERROR = 'boilerplate/App/LOAD_COUNTS_ERROR';
+export const LOAD_AD_SUCCESS = 'Ads/App/LOAD_AD_SUCCESS';
+export const LOAD_AD_ERROR = 'Ads/App/LOAD_AD_ERROR';
 export const CLASSIFY_AD = 'Ads/App/CLASSIFY_AD';
-export const CLASSIFY_AD_SUCCESS = 'boilerplate/App/CLASSIFY_AD_SUCCESS';
-export const CLASSIFY_AD_ERROR = 'boilerplate/App/CLASSIFY_AD_ERROR';
+export const CLASSIFY_AD_SUCCESS = 'Ads/App/CLASSIFY_AD_SUCCESS';
+export const CLASSIFY_AD_ERROR = 'Ads/App/CLASSIFY_AD_ERROR';
 
 export const CLASSIFICATION_TYPES = {
   NOTHING_SUSPECT: 'Nothing suspect',

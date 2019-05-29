@@ -1,6 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import request from 'utils/request';
-import { AD_ID_REGEXP } from '../App/constants';
+import { AD_ID_REGEXP, LOAD_COUNTS } from '../App/constants';
+import { getCounts } from '../App/saga';
 import { LOAD_ADS } from './constants';
 import { adsLoaded, adsLoadingError } from './actions';
 
@@ -20,4 +21,5 @@ export function* getAds() {
 
 export default function* adsSaga() {
   yield takeLatest(LOAD_ADS, getAds);
+  yield takeLatest(LOAD_COUNTS, getCounts);
 }

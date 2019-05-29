@@ -3,9 +3,6 @@ import {
   LOAD_AD,
   LOAD_AD_SUCCESS,
   LOAD_AD_ERROR,
-  LOAD_COUNTS,
-  LOAD_COUNTS_SUCCESS,
-  LOAD_COUNTS_ERROR,
   CLASSIFY_AD,
   CLASSIFY_AD_SUCCESS,
   CLASSIFY_AD_ERROR,
@@ -18,10 +15,6 @@ export const initialState = {
   error: false,
   errorCounts: false,
   ad: null,
-  counts: {
-    adsCount: null,
-    annotationsCount: null,
-  },
   classification: null,
 };
 
@@ -43,24 +36,6 @@ const crowdsourcingPageReducer = (state = initialState, action) =>
       case LOAD_AD_ERROR:
         draft.error = action.error;
         draft.loading = false;
-        break;
-
-      case LOAD_COUNTS:
-        draft.loadingCounts = true;
-        draft.errorCounts = false;
-        break;
-
-      case LOAD_COUNTS_SUCCESS:
-        draft.loadingCounts = false;
-        draft.counts = {
-          adsCount: action.adsCount,
-          annotationsCount: action.annotationsCount,
-        };
-        break;
-
-      case LOAD_COUNTS_ERROR:
-        draft.errorCounts = action.error;
-        draft.loadingCounts = false;
         break;
 
       case CLASSIFY_AD:

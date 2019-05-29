@@ -16,7 +16,7 @@ export default defineMessages({
   },
   counter: {
     id: `${scope}.counter`,
-    defaultMessage: 'Number of advertisements {count}',
+    defaultMessage: 'Échantillon aléatoire de {count} publicités sur {total}',
   },
   'description.what': {
     id: `${scope}.description.what`,
@@ -75,6 +75,7 @@ export default defineMessages({
   },
   'description.tryCrowdsourcing': {
     id: `${scope}.description.tryCrowdsourcing`,
-    defaultMessage: "Essayer l'interface d'évaluation de la légalité",
+    defaultMessage:
+      "Évaluer la légalité d'une des {total}&nbsp;publicités diffusées en France",
   },
 });
