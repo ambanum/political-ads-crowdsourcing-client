@@ -70,7 +70,7 @@ const StyledHeading = styled(Heading)`
   text-align: center;
 `;
 
-const ExplantationHeading = styled(Heading)`
+const ExplanationHeading = styled(Heading)`
   &:not(:first-child) {
     margin-top: 2em;
   }
@@ -150,17 +150,17 @@ export function Ads({ ads, error, intl, load, loading, counts }) {
         <Container>
           <Columns>
             <Columns.Column>
-              <ExplantationHeading size={5} renderAs="h2">
+              <ExplanationHeading size={5} renderAs="h2">
                 <FormattedHTMLMessage {...messages['description.what']} />
-              </ExplantationHeading>
+              </ExplanationHeading>
               <P>
                 <FormattedHTMLMessage
                   {...messages['description.whatParagraph']}
                 />
               </P>
-              <ExplantationHeading size={5} renderAs="h2">
+              <ExplanationHeading size={5} renderAs="h2">
                 <FormattedHTMLMessage {...messages['description.why']} />
-              </ExplantationHeading>
+              </ExplanationHeading>
               <P>
                 <FormattedHTMLMessage
                   {...messages['description.whyParagraph']}
@@ -173,27 +173,27 @@ export function Ads({ ads, error, intl, load, loading, counts }) {
               </P>
             </Columns.Column>
             <Columns.Column>
-              <ExplantationHeading size={5} renderAs="h2">
+              <ExplanationHeading size={5} renderAs="h2">
                 <FormattedHTMLMessage {...messages['description.how']} />
-              </ExplantationHeading>
+              </ExplanationHeading>
               <P>
                 <FormattedHTMLMessage
                   {...messages['description.howParagraph']}
                 />
               </P>
-              <ExplantationHeading size={5} renderAs="h2">
+              <ExplanationHeading size={5} renderAs="h2">
                 <FormattedHTMLMessage
                   {...messages['description.limitations']}
                 />
-              </ExplantationHeading>
+              </ExplanationHeading>
               <P>
                 <FormattedHTMLMessage
                   {...messages['description.limitationsParagraph']}
                 />
               </P>
-              <ExplantationHeading size={5} renderAs="h2">
+              <ExplanationHeading size={5} renderAs="h2">
                 <FormattedHTMLMessage {...messages['description.more']} />
-              </ExplantationHeading>
+              </ExplanationHeading>
               <P>
                 <FormattedHTMLMessage
                   {...messages['description.moreParagraph']}
