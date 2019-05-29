@@ -24,13 +24,10 @@ import {
   Columns,
   Button,
 } from 'react-bulma-components';
-import {
-  makeSelectAd,
-  makeSelectCounts,
-  makeSelectLoading,
-  makeSelectError,
-} from './selectors';
-import { loadAd, loadCounts, classifyAd } from './actions';
+import { makeSelectAd, makeSelectLoading, makeSelectError } from './selectors';
+import { makeSelectCounts } from '../App/selectors';
+import { loadAd, classifyAd } from './actions';
+import { loadCounts } from '../App/actions';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';

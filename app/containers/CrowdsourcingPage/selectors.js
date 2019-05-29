@@ -8,14 +8,6 @@ import { initialState } from './reducer';
 const selectCrowdsourcingPageDomain = state =>
   state.crowdsourcingPage || initialState;
 
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by CrowdsourcingPage
- */
-
 const makeSelectCrowdsourcingPage = () =>
   createSelector(
     selectCrowdsourcingPageDomain,
@@ -26,12 +18,6 @@ const makeSelectAd = () =>
   createSelector(
     selectCrowdsourcingPageDomain,
     substate => substate.ad,
-  );
-
-const makeSelectCounts = () =>
-  createSelector(
-    selectCrowdsourcingPageDomain,
-    substate => substate.counts,
   );
 
 const makeSelectLoading = () =>
@@ -49,7 +35,6 @@ const makeSelectError = () =>
 export {
   makeSelectCrowdsourcingPage,
   makeSelectAd,
-  makeSelectCounts,
   makeSelectLoading,
   makeSelectError,
 };

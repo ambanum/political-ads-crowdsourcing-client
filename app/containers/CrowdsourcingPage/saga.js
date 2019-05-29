@@ -1,22 +1,17 @@
 import { put, takeLatest, select } from 'redux-saga/effects';
 import request from 'utils/request';
-import { AD_ID_REGEXP } from '../App/constants';
-import {
-  LOAD_COUNTS,
-  LOAD_AD,
-  CLASSIFY_AD,
-  CLASSIFY_AD_SUCCESS,
-} from './constants';
+import { LOAD_COUNTS, AD_ID_REGEXP } from '../App/constants';
+import { LOAD_AD, CLASSIFY_AD, CLASSIFY_AD_SUCCESS } from './constants';
+import { getCounts } from '../App/saga';
+
 import {
   loadAd,
-  loadCounts,
   adLoaded,
   adLoadingError,
-  countsLoaded,
-  countsLoadingError,
   classificationSuccess,
   classificationError,
 } from './actions';
+import { loadCounts } from '../App/actions';
 import { makeSelectAd } from './selectors';
 
 export function* getAd() {
@@ -27,17 +22,6 @@ export function* getAd() {
     yield put(adLoaded(ad));
   } catch (err) {
     yield put(adLoadingError(err));
-  }
-}
-
-export function* getCounts() {
-  try {
-    const { adsCount, annotationsCount } = yield request(
-      `${GLOBAL_CONFIG.apiUrl}/counts`,
-    );
-    yield put(countsLoaded({ adsCount, annotationsCount }));
-  } catch (err) {
-    yield put(countsLoadingError(err));
   }
 }
 
