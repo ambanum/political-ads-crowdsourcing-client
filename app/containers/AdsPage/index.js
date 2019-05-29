@@ -25,12 +25,19 @@ import {
 } from 'react-bulma-components';
 import {
   makeSelectAds,
+  makeSelectCounts,
   makeSelectLoading,
   makeSelectError,
 } from '../App/selectors';
 import { loadAds } from './actions';
+import { loadCounts } from '../App/actions';
 import saga from './saga';
 import messages from './messages';
+
+const StyledHero = styled(Hero)`
+  background-color: #4934a2 !important;
+  background-image: linear-gradient(325deg, #54318c 0%, #4934a2 74%);
+`;
 
 const AdsCollection = styled.div`
   margin: 1.5em auto;
@@ -46,10 +53,10 @@ const AdsCollection = styled.div`
   }
 `;
 
-const Explanation = styled.section`
+const Explanation = styled(Section)`
   background: #fafafa;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  border-top: 1px solid rgba(0, 0, 0, 0.45);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   font-size: 14px;
 `;
 
@@ -74,12 +81,14 @@ const ExplantationHeading = styled(Heading)`
 
 const ValueProposition = styled.p`
   text-align: center;
-  margin-bottom: 5em;
 `;
 
 const MainActionButton = styled(Button)`
+  max-width: 20em;
   white-space: normal;
   height: auto;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
 `;
 
 function checkNested(obj, level, ...rest) {
@@ -88,24 +97,15 @@ function checkNested(obj, level, ...rest) {
   return checkNested(obj[level], ...rest);
 }
 
-export function Ads({
-  ads,
-  error,
-  intl,
-  load,
-  loading,
-  match: {
-    params: { country },
-  },
-}) {
+export function Ads({ ads, error, intl, load, loading, counts }) {
   useInjectSaga({ key: 'ads', saga });
   useEffect(() => {
     if (error) {
       console.log(error);
     }
 
-    if (!ads && !error) {
-      load({ country });
+    if (!(loading || ads || counts.adsCount || error)) {
+      load();
     }
   });
 
@@ -118,7 +118,7 @@ export function Ads({
           content={intl.messages['app.containers.Ads.title']}
         />
       </Helmet>
-      <Hero color="info" gradient size="medium">
+      <StyledHero color="info" size="medium">
         <Hero.Body>
           <Container>
             <StyledHeading>
@@ -126,82 +126,87 @@ export function Ads({
             </StyledHeading>
           </Container>
         </Hero.Body>
-      </Hero>
+      </StyledHero>
+      <Section>
+        <Container>
+          <ValueProposition>
+            <MainActionButton
+              color="info"
+              renderAs="a"
+              href="/political-ads/fr/crowdsourcing"
+              size="large"
+            >
+              <FormattedHTMLMessage
+                {...messages['description.tryCrowdsourcing']}
+                values={{
+                  total: counts.adsCount,
+                }}
+              />
+            </MainActionButton>
+          </ValueProposition>
+        </Container>
+      </Section>
       <Explanation>
-        <Section>
-          <Container>
-            <ValueProposition>
-              <MainActionButton
-                color="info"
-                renderAs="a"
-                href="/political-ads/fr/crowdsourcing"
-                size="large"
-              >
+        <Container>
+          <Columns>
+            <Columns.Column>
+              <ExplantationHeading size={5} renderAs="h2">
+                <FormattedHTMLMessage {...messages['description.what']} />
+              </ExplantationHeading>
+              <P>
                 <FormattedHTMLMessage
-                  {...messages['description.tryCrowdsourcing']}
+                  {...messages['description.whatParagraph']}
                 />
-              </MainActionButton>
-            </ValueProposition>
-            <Columns>
-              <Columns.Column>
-                <ExplantationHeading size={5} renderAs="h2">
-                  <FormattedHTMLMessage {...messages['description.what']} />
-                </ExplantationHeading>
-                <P>
-                  <FormattedHTMLMessage
-                    {...messages['description.whatParagraph']}
-                  />
-                </P>
-                <ExplantationHeading size={5} renderAs="h2">
-                  <FormattedHTMLMessage {...messages['description.why']} />
-                </ExplantationHeading>
-                <P>
-                  <FormattedHTMLMessage
-                    {...messages['description.whyParagraph']}
-                  />
-                </P>
-                <P>
-                  <FormattedHTMLMessage
-                    {...messages['description.dumpAccess']}
-                  />
-                </P>
-              </Columns.Column>
-              <Columns.Column>
-                <ExplantationHeading size={5} renderAs="h2">
-                  <FormattedHTMLMessage {...messages['description.how']} />
-                </ExplantationHeading>
-                <P>
-                  <FormattedHTMLMessage
-                    {...messages['description.howParagraph']}
-                  />
-                </P>
-                <ExplantationHeading size={5} renderAs="h2">
-                  <FormattedHTMLMessage
-                    {...messages['description.limitations']}
-                  />
-                </ExplantationHeading>
-                <P>
-                  <FormattedHTMLMessage
-                    {...messages['description.limitationsParagraph']}
-                  />
-                </P>
-                <ExplantationHeading size={5} renderAs="h2">
-                  <FormattedHTMLMessage {...messages['description.more']} />
-                </ExplantationHeading>
-                <P>
-                  <FormattedHTMLMessage
-                    {...messages['description.moreParagraph']}
-                  />
-                </P>
-                <P>
-                  <FormattedHTMLMessage
-                    {...messages['description.ourWorkParagraph']}
-                  />
-                </P>
-              </Columns.Column>
-            </Columns>
-          </Container>
-        </Section>
+              </P>
+              <ExplantationHeading size={5} renderAs="h2">
+                <FormattedHTMLMessage {...messages['description.why']} />
+              </ExplantationHeading>
+              <P>
+                <FormattedHTMLMessage
+                  {...messages['description.whyParagraph']}
+                />
+              </P>
+              <P>
+                <FormattedHTMLMessage
+                  {...messages['description.dumpAccess']}
+                />
+              </P>
+            </Columns.Column>
+            <Columns.Column>
+              <ExplantationHeading size={5} renderAs="h2">
+                <FormattedHTMLMessage {...messages['description.how']} />
+              </ExplantationHeading>
+              <P>
+                <FormattedHTMLMessage
+                  {...messages['description.howParagraph']}
+                />
+              </P>
+              <ExplantationHeading size={5} renderAs="h2">
+                <FormattedHTMLMessage
+                  {...messages['description.limitations']}
+                />
+              </ExplantationHeading>
+              <P>
+                <FormattedHTMLMessage
+                  {...messages['description.limitationsParagraph']}
+                />
+              </P>
+              <ExplantationHeading size={5} renderAs="h2">
+                <FormattedHTMLMessage {...messages['description.more']} />
+              </ExplantationHeading>
+              <P>
+                <FormattedHTMLMessage
+                  {...messages['description.moreParagraph']}
+                />
+              </P>
+              <P>
+                <FormattedHTMLMessage
+                  {...messages['description.ourWorkParagraph']}
+                />
+              </P>
+            </Columns.Column>
+          </Columns>
+        </Container>
       </Explanation>
       <Section>
         <Container>
@@ -213,6 +218,7 @@ export function Ads({
                   {...messages.counter}
                   values={{
                     count: ads.length,
+                    total: counts.adsCount,
                   }}
                 />
               )}
@@ -270,17 +276,22 @@ Ads.propTypes = {
   intl: intlShape.isRequired,
   loading: PropTypes.bool,
   match: PropTypes.object,
+  counts: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
   ads: makeSelectAds(),
+  counts: makeSelectCounts(),
   loading: makeSelectLoading(),
   error: makeSelectError(),
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    load: options => dispatch(loadAds(options)),
+    load: () => {
+      dispatch(loadCounts());
+      dispatch(loadAds());
+    },
   };
 }
 
