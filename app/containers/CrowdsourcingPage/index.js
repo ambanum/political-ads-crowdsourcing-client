@@ -28,6 +28,7 @@ import { makeSelectAd, makeSelectLoading, makeSelectError } from './selectors';
 import { makeSelectCounts } from '../App/selectors';
 import { loadAd, classifyAd } from './actions';
 import { loadCounts } from '../App/actions';
+import { numberWithSpaces } from '../App/utils';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
@@ -265,10 +266,6 @@ const CounterWrapperLeft = styled(CounterWrapper)`
 const ShareContainer = styled.div`
   display: block;
 `;
-
-function numberWithSpaces(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-}
 
 export function CrowdsourcingPage({
   error,
