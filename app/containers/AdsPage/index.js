@@ -31,6 +31,7 @@ import {
 } from '../App/selectors';
 import { loadAds } from './actions';
 import { loadCounts } from '../App/actions';
+import { numberWithSpaces } from '../App/utils';
 import saga from './saga';
 import messages from './messages';
 
@@ -139,7 +140,7 @@ export function Ads({ ads, error, intl, load, loading, counts }) {
               <FormattedHTMLMessage
                 {...messages['description.tryCrowdsourcing']}
                 values={{
-                  total: counts.adsCount,
+                  total: numberWithSpaces(counts.adsCount),
                 }}
               />
             </MainActionButton>
@@ -167,9 +168,7 @@ export function Ads({ ads, error, intl, load, loading, counts }) {
                 />
               </P>
               <P>
-                <FormattedHTMLMessage
-                  {...messages['description.dumpAccess']}
-                />
+                <FormattedHTMLMessage {...messages['description.dumpAccess']} />
               </P>
             </Columns.Column>
             <Columns.Column>
@@ -218,7 +217,7 @@ export function Ads({ ads, error, intl, load, loading, counts }) {
                   {...messages.counter}
                   values={{
                     count: ads.length,
-                    total: counts.adsCount,
+                    total: numberWithSpaces(counts.adsCount),
                   }}
                 />
               )}
