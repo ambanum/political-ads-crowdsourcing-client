@@ -4,7 +4,7 @@ set -e
 ### Configuration ###
 
 SERVER=cloud@disinfo.quaidorsay.fr
-APP_DIR=/home/cloud/political-ads-legality
+APP_DIR=/home/cloud/political-ads
 
 
 ### Library ###

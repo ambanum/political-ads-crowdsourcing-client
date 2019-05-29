@@ -48,6 +48,12 @@ const Link = styled.a`
 `;
 
 const Media = styled.div`
+  margin-left: calc(-1em - 1px);
+  margin-right: calc(-1em - 1px);
+  margin-top: 1em;
+`;
+
+const NoMedia = styled.div`
   background: #fafafa;
   margin-top: 1em;
   padding: 5em 1em;
@@ -55,15 +61,17 @@ const Media = styled.div`
   border-radius: 3px;
   color: #5c5962;
   text-align: center;
+  margin-bottom: 1em;
 `;
 
 const Separation = styled.hr`
-  margin: 1em -1em;
+  margin: 0 -1em;
   border: none;
   border-top: 1px solid #e9eaeb;
 `;
 
 const MetaData = styled.div`
+  margin-top: 1em;
   display: flex;
   justify-content: space-between;
 `;
@@ -87,6 +95,45 @@ const StyledSpinner = styled(Spinner)`
   margin: 8em auto;
 `;
 
+const Avatar = styled.img`
+  with: 42px;
+  height: 42px;
+  margin-right: 8px;
+  border: 1px solid #e9eaeb;
+  border-radius: 100%;
+`;
+
+const Header = styled.div`
+  display: flex;
+`;
+
+const CTA = styled.a`
+  display: block;
+  margin-left: -1em;
+  margin-right: -1em;
+  padding: 1em;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const CTADescription = styled.p`
+  color: #606770;
+`;
+
+const CTADomain = styled.p`
+  margin-top: 0.5em;
+  color: #606770;
+  text-transform: uppercase;
+  font-size: 12px;
+`;
+
+const Picture = styled.img`
+  width: 100%;
+`;
+const Video = styled.video``;
+
 function Ad({
   title,
   content,
@@ -98,46 +145,91 @@ function Ad({
   spendUpperBound,
   currency,
   loading,
+  className,
+  snapshot,
+  ctaLink,
+  ctaTitle,
+  ctaDescription,
+  ctaLinkDomain,
 }) {
   const pageLink = `https://www.facebook.com/${pageId}`;
+
   return (
-    <Wrapper>
+    <Wrapper className={className}>
       {!loading && (
-        <Title>
-          <Link href={pageLink} target="_blank">
-            {title}
-          </Link>
-        </Title>
+        <Header>
+          {snapshot && snapshot.page_profile_picture_url && (
+            <Avatar src={snapshot.page_profile_picture_url} alt="" />
+          )}
+          <div>
+            <Title>
+              <Link href={pageLink} target="_blank">
+                {title}
+              </Link>
+            </Title>
+            <Subtitle>
+              <FormattedMessage {...messages.sponsored} />
+              <React.Fragment>
+                &nbsp;•&nbsp;
+                {fundingEntity && (
+                  <React.Fragment>
+                    <Light>
+                      <FormattedMessage {...messages.sponsoredBy} />
+                    </Light>{' '}
+                    {fundingEntity}
+                  </React.Fragment>
+                )}
+                {!fundingEntity && (
+                  <React.Fragment>
+                    <Light>
+                      <FormattedMessage {...messages.notSpecifiedSponsor} />
+                    </Light>
+                  </React.Fragment>
+                )}
+              </React.Fragment>
+            </Subtitle>
+          </div>
+        </Header>
       )}
       {!loading && (
-        <Subtitle>
-          <FormattedMessage {...messages.sponsored} />
-          <React.Fragment>
-            &nbsp;•&nbsp;
-            {fundingEntity && (
-              <React.Fragment>
-                <Light>
-                  <FormattedMessage {...messages.sponsoredBy} />
-                </Light>{' '}
-                {fundingEntity}
-              </React.Fragment>
-            )}
-            {!fundingEntity && (
-              <React.Fragment>
-                <Light>
-                  <FormattedMessage {...messages.notSpecifiedSponsor} />
-                </Light>
-              </React.Fragment>
-            )}
-          </React.Fragment>
-        </Subtitle>
-      )}
-      {content && !loading && (
         <React.Fragment>
-          <div dangerouslySetInnerHTML={{ __html: linkifyHtml(content) }} />
-          <Media>
-            <FormattedHTMLMessage {...messages.cantDisplayMedia} />
-          </Media>
+          {content && (
+            <div dangerouslySetInnerHTML={{ __html: linkifyHtml(content) }} />
+          )}
+          {snapshot && (
+            <Media>
+              {snapshot.media.images[0] && (
+                <Picture
+                  src={snapshot.media.images[0].original_image_url}
+                  alt=""
+                />
+              )}
+              {snapshot.media.videos[0] && (
+                <Video
+                  controls
+                  poster={snapshot.media.videos[0].video_preview_image_url}
+                  height="100%"
+                  loop=""
+                  src={snapshot.media.videos[0].video_sd_url}
+                  width="100%"
+                />
+              )}
+            </Media>
+          )}
+          {!snapshot && (
+            <NoMedia>
+              <FormattedHTMLMessage {...messages.cantDisplayMedia} />
+            </NoMedia>
+          )}
+          {ctaLink && (
+            <CTA href={ctaLink} target="_blank">
+              <p>
+                <strong>{ctaTitle || title}</strong>
+              </p>
+              <CTADescription>{ctaDescription}</CTADescription>
+              <CTADomain>{ctaLinkDomain}</CTADomain>
+            </CTA>
+          )}
         </React.Fragment>
       )}
       {loading && <StyledSpinner />}

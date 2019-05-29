@@ -1,3 +1,4 @@
+import './fonts/fontello.css';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -26,6 +27,16 @@ const GlobalStyle = createGlobalStyle`
 
   h1, h2, h3, h4, h5, h6 {
     color: #27262b;
+  }
+
+  a.linkified {
+    color: #385898 !important;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  a.linkified:hover {
+    text-decoration: underline;
   }
 `;
 

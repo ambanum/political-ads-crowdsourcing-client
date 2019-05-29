@@ -28,6 +28,12 @@ const makeSelectAd = () =>
     substate => substate.ad,
   );
 
+const makeSelectCounts = () =>
+  createSelector(
+    selectCrowdsourcingPageDomain,
+    substate => substate.counts,
+  );
+
 const makeSelectLoading = () =>
   createSelector(
     selectCrowdsourcingPageDomain,
@@ -43,6 +49,7 @@ const makeSelectError = () =>
 export {
   makeSelectCrowdsourcingPage,
   makeSelectAd,
+  makeSelectCounts,
   makeSelectLoading,
   makeSelectError,
 };

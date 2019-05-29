@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import 'react-tippy/dist/tippy.css';
 import { Tooltip as Tippy } from 'react-tippy';
 
-function Tooltip({ children, content }) {
+function Tooltip({ children, content, ...othersProps }) {
   return (
     <Tippy
       title={content}
@@ -11,10 +11,11 @@ function Tooltip({ children, content }) {
       trigger="mouseenter"
       touchHold
       arrow
-      delay="300"
       hideDelay="0"
       duration="200"
       size="small"
+      theme="light"
+      {...othersProps}
     >
       {children}
     </Tippy>
@@ -24,7 +25,6 @@ function Tooltip({ children, content }) {
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
   content: PropTypes.string.isRequired,
-  position: PropTypes.string,
 };
 
 export default memo(Tooltip);

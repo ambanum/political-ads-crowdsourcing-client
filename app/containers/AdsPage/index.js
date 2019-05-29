@@ -82,6 +82,12 @@ const MainActionButton = styled(Button)`
   height: auto;
 `;
 
+function checkNested(obj, level, ...rest) {
+  if (obj === undefined) return false;
+  if (rest.length == 0 && obj.hasOwnProperty(level)) return true;
+  return checkNested(obj[level], ...rest);
+}
+
 export function Ads({
   ads,
   error,
@@ -128,7 +134,7 @@ export function Ads({
               <MainActionButton
                 color="info"
                 renderAs="a"
-                href="/ads/fr/crowdsourcing"
+                href="/political-ads/fr/crowdsourcing"
                 size="large"
               >
                 <FormattedHTMLMessage
@@ -231,6 +237,22 @@ export function Ads({
                     spendLowerBound={ad.spend && ad.spend.lower_bound}
                     spendUpperBound={ad.spend && ad.spend.upper_bound}
                     currency={ad.currency}
+                    snapshot={ad.snapshot}
+                    ctaLink={
+                      checkNested(
+                        ad,
+                        'snapshot',
+                        'react_component',
+                        'props',
+                        'adCard',
+                        'snapshot',
+                        'link_url',
+                      ) &&
+                      ad.snapshot.react_component.props.adCard.snapshot.link_url
+                    }
+                    ctaTitle={ad.ad_creative_link_title}
+                    ctaDescription={ad.ad_creative_link_description}
+                    ctaLinkDomain={ad.ad_creative_link_caption}
                   />
                 ))}
             </AdsCollection>
