@@ -360,7 +360,7 @@ export function CrowdsourcingPage({
                 <SupTitle renderAs="h2">
                   <FormattedHTMLMessage {...messages.supTitle} />
                 </SupTitle>
-                <Title>
+                <Title size={1}>
                   <FormattedHTMLMessage {...messages.header} />
                 </Title>
               </Columns.Column>
