@@ -14,7 +14,7 @@
   "app.containers.Ads.description.more": "C’est tout&nbsp;?",
   "app.containers.Ads.description.moreParagraph": "Non, nous cherchons également activement des partenaires pour déployer ce système dans toute l’Union européenne. Vous savez coder ou traduire&nbsp;? <a href=\"mailto:matti.schneider@diplomatie.gouv.fr?subject=Ads\">Aidez-nous</a>&nbsp;!",
   "app.containers.Ads.description.ourWorkParagraph": "Cet outil fait partie de <a href=\"http://disinfo.quaidorsay.fr\">nos expériences de lutte contre la désinformation.</a>",
-  "app.containers.Ads.description.tryCrowdsourcing": "Évaluer la légalité d'une des {total} publicités diffusées en France",
+  "app.containers.Ads.description.tryCrowdsourcing": "Évaluer la légalité d'une des {total}&nbsp;publicités diffusées en France",
   "app.containers.Ads.description.what": "Qu’est-ce que ce site&nbsp;?",
   "app.containers.Ads.description.whatParagraph": "Ce site affiche les publicités que les opérateurs de réseaux sociaux classent comme d’ordre politique, c'est-à-dire qui soutiennent directement une liste, ou qui sont liées à un débat majeur des élections européennes 2019 (par exemple l’écologie, l’immigration…). Pour l’instant, nous n’affichons que les publicités Facebook.",
   "app.containers.Ads.description.why": "Pourquoi ce site&nbsp;?",

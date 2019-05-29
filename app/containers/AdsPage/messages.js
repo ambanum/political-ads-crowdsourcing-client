@@ -76,6 +76,6 @@ export default defineMessages({
   'description.tryCrowdsourcing': {
     id: `${scope}.description.tryCrowdsourcing`,
     defaultMessage:
-      "Évaluer la légalité d'une des {total} publicités diffusées en France",
+      "Évaluer la légalité d'une des {total}&nbsp;publicités diffusées en France",
   },
 });
