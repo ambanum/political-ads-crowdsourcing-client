@@ -29,6 +29,12 @@ const makeSelectAds = () =>
     globalState => globalState.ads,
   );
 
+const makeSelectAnnotations = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.annotations,
+  );
+
 const makeSelectCounts = () =>
   createSelector(
     selectGlobal,
@@ -40,5 +46,6 @@ export {
   makeSelectLoading,
   makeSelectError,
   makeSelectAds,
+  makeSelectAnnotations,
   makeSelectCounts,
 };

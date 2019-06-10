@@ -134,6 +134,18 @@ const Picture = styled.img`
 `;
 const Video = styled.video``;
 
+const Annotation = styled.div`
+  background: ${props => props.state === 'negative' ? '#EC4C64' : (props.state === 'positive' ? '#63CC6D' : '#5CCDB3')};
+  margin: -1em -1em 1em -1em;
+  padding: 0.5em 1em;
+  border-top-left-radius: 1px;
+  border-top-right-radius: 1px;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: 0 0 0 1px ${props => props.state === 'negative' ? '#EC4C64' : (props.state === 'positive' ? '#63CC6D' : '#5CCDB3')};
+`;
+
 function Ad({
   title,
   content,
@@ -151,11 +163,33 @@ function Ad({
   ctaTitle,
   ctaDescription,
   ctaLinkDomain,
+  annotation,
 }) {
   const pageLink = `https://www.facebook.com/${pageId}`;
 
+  let state;
+  if (annotation) {
+    switch (annotation) {
+      case 'Nothing suspect':
+        state = 'positive';
+        break;
+      case "Can't say":
+      case 'Not related to politics or issues of national importance':
+        state = 'neutral';
+        break;
+      case 'Introduces of a new controversial element':
+      case 'Contains a survey':
+      case 'Promotes a candidate, list or political party':
+        state = 'negative';
+        break;
+      default:
+        state = 'neutral';
+    }
+  }
+
   return (
     <Wrapper className={className}>
+      {annotation && <Annotation state={state}>{annotation}</Annotation>}
       {!loading && (
         <Header>
           {snapshot && snapshot.page_profile_picture_url && (
@@ -269,6 +303,13 @@ Ad.propTypes = {
   spendUpperBound: PropTypes.string,
   currency: PropTypes.string,
   loading: PropTypes.bool,
+  className: PropTypes.string,
+  snapshot: PropTypes.object,
+  ctaLink: PropTypes.string,
+  ctaTitle: PropTypes.string,
+  ctaDescription: PropTypes.string,
+  ctaLinkDomain: PropTypes.string,
+  annotation: PropTypes.string,
 };
 
 export default memo(Ad);

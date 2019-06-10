@@ -12,6 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
 import AdsPage from 'containers/AdsPage';
+import AnnotationsPage from 'containers/AnnotationsPage';
 import CrowdsourcingPage from 'containers/CrowdsourcingPage';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import { Container, Footer } from 'react-bulma-components';
@@ -47,6 +48,10 @@ export default function App() {
         <Route
           path="/political-ads/:country?/crowdsourcing"
           component={CrowdsourcingPage}
+        />
+        <Route
+          path="/political-ads/annotations/:type?"
+          component={AnnotationsPage}
         />
         <Route path="/political-ads/:country?" component={AdsPage} />
         <Route component={NotFoundPage} />

@@ -14,6 +14,11 @@ import {
   LOAD_ADS_ERROR,
 } from '../AdsPage/constants';
 import {
+  LOAD_ANNOTATIONS_SUCCESS,
+  LOAD_ANNOTATIONS,
+  LOAD_ANNOTATIONS_ERROR,
+} from '../AnnotationsPage/constants';
+import {
   LOAD_COUNTS,
   LOAD_COUNTS_SUCCESS,
   LOAD_COUNTS_ERROR,
@@ -28,6 +33,7 @@ export const initialState = {
     adsCount: null,
     annotationsCount: null,
   },
+  annotations: null,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -46,6 +52,23 @@ const appReducer = (state = initialState, action) =>
         break;
 
       case LOAD_ADS_ERROR:
+        draft.error = action.error;
+        draft.loading = false;
+        break;
+
+      case LOAD_ANNOTATIONS:
+        draft.loading = true;
+        draft.error = false;
+        draft.annotations = null;
+        break;
+
+      case LOAD_ANNOTATIONS_SUCCESS:
+        draft.loading = false;
+        draft.annotations = action.annotations;
+        draft.annotations = action.annotations;
+        break;
+
+      case LOAD_ANNOTATIONS_ERROR:
         draft.error = action.error;
         draft.loading = false;
         break;
