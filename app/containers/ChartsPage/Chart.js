@@ -159,10 +159,14 @@ const ChartStyles = styled.div`
   }
 `;
 
-function Chart({ data, messages, locale, country }) {
+function Chart({ data, messages, locale, country, size }) {
   return (
     <ChartStyles>
-      <C3Chart data={data} {...graphOptions(messages, locale, country)} />
+      <C3Chart
+        data={data}
+        size={size}
+        {...graphOptions(messages, locale, country)}
+      />
     </ChartStyles>
   );
 }

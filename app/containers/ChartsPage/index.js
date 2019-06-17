@@ -29,6 +29,9 @@ import {
   Hero,
   Columns,
 } from 'react-bulma-components';
+import List from 'react-virtualized/dist/es/List';
+import AutoSizer from 'react-virtualized/dist/es/AutoSizer';
+import WindowScroller from 'react-virtualized/dist/es/WindowScroller';
 import Spinner from 'components/Spinner';
 import Chart from './Chart';
 import { loadAdsStats } from './actions';
@@ -56,6 +59,18 @@ const ChartsPageWrapper = styled.section`
     rgb(13, 50, 77) 74%
   );
 `;
+
+const CHART_HEIGHT = 320;
+const SPACE_BETWEEN_CHARTS = 48;
+const CHART_WRAPPER_PADDING = 32;
+const CHART_TITLE_HEIGHT = 24;
+const SPACE_BETWEEN_TITLE_AND_CHART = 24;
+const CHART_WRAPPER_HEIGHT =
+  CHART_HEIGHT +
+  SPACE_BETWEEN_CHARTS +
+  CHART_WRAPPER_PADDING * 2 +
+  CHART_TITLE_HEIGHT +
+  SPACE_BETWEEN_TITLE_AND_CHART;
 
 const Title = styled(Heading)`
   color: #fff;
@@ -93,16 +108,22 @@ const ChartSection = styled(Section)`
     inset rgba(0, 0, 0, 0.12) 0px 3px 3px -2px;
 `;
 
+const ChartTitle = styled(Heading)`
+  height: ${CHART_TITLE_HEIGHT}px;
+  margin-bottom: ${SPACE_BETWEEN_TITLE_AND_CHART}px;
+`;
+
 const CountryChart = styled.div`
-  padding: 2rem;
+  padding: ${CHART_WRAPPER_PADDING}px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px 0px,
     rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 3px 3px -2px;
   background: #fff;
   border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  min-height: ${CHART_WRAPPER_HEIGHT - SPACE_BETWEEN_CHARTS}px;
 
-  &:not(:last-child) {
-    margin-bottom: 3rem;
-  }
+  margin-bottom: ${SPACE_BETWEEN_CHARTS}px;
 `;
 
 const FirstColumn = styled(Columns.Column)`
@@ -192,6 +213,47 @@ export function ChartsPage({
     );
   }
 
+  // eslint-disable-next-line react/prop-types
+  const rowRenderer = ({ index, isScrolling, isVisible, key, style }) => {
+    const countryData = datas[index];
+    return (
+      <div key={key} style={style}>
+        <CountryChart isScrolling={isScrolling} isVisible={isVisible}>
+          {!isVisible && <Spinner />}
+          {isVisible && (
+            <React.Fragment>
+              <ChartTitle align="center" size={5} renderAs="h2">
+                <Link
+                  href={`${FB_ADS_REPORT_URL}?country=${countryData.country}`}
+                  target="_blank"
+                >
+                  {i18NIsoCountries.getName(countryData.title, locale)}&nbsp;
+                  <SVG
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="8"
+                    height="8"
+                    viewBox="0 0 8 8"
+                  >
+                    <path d="M0 0v8h8v-2h-1v1h-6v-6h1v-1h-2zm4 0l1.5 1.5-2.5 2.5 1 1 2.5-2.5 1.5 1.5v-4h-4z" />
+                  </SVG>
+                </Link>
+              </ChartTitle>
+              <Chart
+                data={countryData.data}
+                messages={intl.messages}
+                locale={locale}
+                country={countryData.country}
+                size={{
+                  height: CHART_HEIGHT,
+                }}
+              />
+            </React.Fragment>
+          )}
+        </CountryChart>
+      </div>
+    );
+  };
+
   return (
     <ChartsPageWrapper>
       <Hero size="medium">
@@ -218,33 +280,36 @@ export function ChartsPage({
       <ChartSection>
         <Container>
           {loading && !datas && <Spinner white />}
-          {datas &&
-            datas.map(countryData => (
-              <CountryChart key={countryData.title}>
-                <Heading align="center" size={5} renderAs="h2">
-                  <Link
-                    href={`${FB_ADS_REPORT_URL}?country=${countryData.country}`}
-                    target="_blank"
-                  >
-                    {i18NIsoCountries.getName(countryData.title, locale)}&nbsp;
-                    <SVG
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="8"
-                      height="8"
-                      viewBox="0 0 8 8"
-                    >
-                      <path d="M0 0v8h8v-2h-1v1h-6v-6h1v-1h-2zm4 0l1.5 1.5-2.5 2.5 1 1 2.5-2.5 1.5 1.5v-4h-4z" />
-                    </SVG>
-                  </Link>
-                </Heading>
-                <Chart
-                  data={countryData.data}
-                  messages={intl.messages}
-                  locale={locale}
-                  country={countryData.country}
-                />
-              </CountryChart>
-            ))}
+          {datas && (
+            <WindowScroller scrollElement={window}>
+              {({
+                height,
+                isScrolling,
+                registerChild,
+                onChildScroll,
+                scrollTop,
+              }) => (
+                <AutoSizer disableHeight>
+                  {({ width }) => (
+                    <div ref={registerChild}>
+                      <List
+                        height={height}
+                        autoHeight
+                        overscanRowCount={7}
+                        rowCount={datas.length}
+                        rowHeight={CHART_WRAPPER_HEIGHT}
+                        onScroll={onChildScroll}
+                        rowRenderer={rowRenderer}
+                        scrollTop={scrollTop}
+                        isScrolling={isScrolling}
+                        width={width}
+                      />
+                    </div>
+                  )}
+                </AutoSizer>
+              )}
+            </WindowScroller>
+          )}
         </Container>
       </ChartSection>
     </ChartsPageWrapper>
