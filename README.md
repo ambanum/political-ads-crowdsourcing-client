@@ -56,7 +56,7 @@ Build the application and copy file to your server:
 npm run build
 ```
 
-On your server, serve the built application as static website.
+On your server, you can simply serve the built application as a set of static files.
 For example, you can do this with Nginx by adding theses simple lines to your Nginx configuration file:
 
 ```
