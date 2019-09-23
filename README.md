@@ -31,7 +31,7 @@ cd political-ads-legality
 npm install
 ```
 
-The backend server [political-ads-scraper](https://github.com/ambanum/political-ads-scraper) is required.
+The backend server [`political-ads-scraper`](https://github.com/ambanum/political-ads-scraper) is required.
 
 ### Usage
 
