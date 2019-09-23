@@ -6,7 +6,7 @@ Allow citizens to assess the legality of political advertisement on digital plat
 
 This product focuses on political advertisement on Facebook and France but we intend to extend it to more sources. Your contributions are more than welcome.
 
-This website displays ads that social network operators classify as political, i.e. that directly support a list, or that are linked to a major debate in the 2019 European elections (e.g. ecology, immigration, etc.).
+This website displays ads that social network operators classify as political, i.e. that directly support a candidate, or that are related to a major issue of interest in the 2019 European elections (environment, immigration…).
 
 ## Motivation
 
