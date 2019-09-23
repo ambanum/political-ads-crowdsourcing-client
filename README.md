@@ -54,7 +54,7 @@ module.exports = config;
 ```
 
 Modify values of `SERVER` and `APP_DIR` variables in the script `/internals/scripts/deploy.sh`.
-- `SERVER` is username and the hostname of your server where the script will connect to copy the built application
+- `SERVER` is the username and hostname of your server where the script will connect to copy the built application over SSH
 - `APP_DIR` is the target directory in your server where the built app will be copied
 
 For example:
@@ -65,10 +65,10 @@ APP_DIR=/home/my_user/target_directory_for_the_app/
 …
 ```
 
-Build the application and copy file to your server:
+Build the application and send the built files to `APP_DIR` in `SERVER`:
 
 ```sh
-npm run build
+npm run deploy
 ```
 
 On your server, you can simply serve the built application as a set of static files.
