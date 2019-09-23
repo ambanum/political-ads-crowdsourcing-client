@@ -57,7 +57,7 @@ npm run build
 ```
 
 On your server, you can simply serve the built application as a set of static files.
-For example, you can do this with Nginx by adding theses simple lines to your Nginx configuration file:
+For example, you can do this with Nginx by adding these lines to your configuration file:
 
 ```
     …
