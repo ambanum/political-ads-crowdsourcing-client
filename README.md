@@ -43,11 +43,26 @@ npm start
 
 ## Deployment
 
-Modify the script `/internals/scripts/deploy.sh` to specify your server and the target directory for the built application:
+Modify the production configuration file `config/production.js` with the URL of your API endpoint:
 
+```
+const config = {
+  apiUrl: 'https://<YOUR_SERVER>/api/politicals-ads/1.0',
+};
+
+module.exports = config;
+```
+
+Modify values of `SERVER` and `APP_DIR` variables in the script `/internals/scripts/deploy.sh`.
+- `SERVER` is username and the hostname of your server where the script will connect to copy the built application
+- `APP_DIR` is the target directory in your server where the built app will be copied
+
+For example:
 ```sh
-SERVER=<YOUR_SERVER_ADDRESS>
-APP_DIR=<TARGET_DIRECTORY_FOR_THE_BUILT_APP>
+…
+SERVER=my_user@my_host.fr
+APP_DIR=/home/my_user/target_directory_for_the_app/
+…
 ```
 
 Build the application and copy file to your server:
