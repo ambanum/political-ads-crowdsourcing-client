@@ -11,7 +11,7 @@ This website displays ads that social network operators classify as political, i
 ## Motivation
 
 Since the beginning of May 2019, Facebook allows users to search its advertising library to access political and public-interest advertising and provides a [detailed report](https://www.facebook.com/ads/library/report/) for each country of the European Union.
-Nevertheless, this evaluation is now entirely delegated to private actors, and it seems important to help them to better characterize what is relevant to the political debate or "of general interest".
+Nevertheless, this evaluation is now entirely delegated to private actors, and it seems important to help them better characterize what is relevant to the political debate or “of general interest”.
 We would like to allow all citizens to ensure that election propaganda complies with the rules.
 Moreover, by storing this data independently of its supplier, we guarantee its integrity over time.
 
