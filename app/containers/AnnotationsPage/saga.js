@@ -11,9 +11,13 @@ export function* getAnnotations(action) {
       url = `${url}/${action.options.type}`;
     }
 
-    const annotations = yield request(
-      `${url}?skip=${action.options.skip}&limit=${action.options.limit}`,
-    );
+    url = `${url}?skip=${action.options.skip}&limit=${action.options.limit}`;
+
+    if (action.options.isReview) {
+      url = `${url}&isReview=${action.options.isReview}`;
+    }
+
+    const annotations = yield request(url);
     yield put(annotationsLoaded(annotations));
   } catch (err) {
     yield put(annotationsLoadingError(err));
