@@ -53,6 +53,7 @@ export function AnnotationsPage({ annotations, error, load, loading, match, loca
   const params = new URLSearchParams(location.search);
   let limit = params.get('limit') || 2000;
   const skip = params.get('skip') || 0;
+  const isReview = params.get('isReview') || false;
 
   useInjectSaga({ key: 'ads', saga });
   useEffect(() => {
@@ -65,7 +66,7 @@ export function AnnotationsPage({ annotations, error, load, loading, match, loca
       if (!type) {
         limit = params.get('limit') || 100;
       }
-      load({ type, skip, limit });
+      load({ type, skip, limit, isReview });
     }
   });
 
