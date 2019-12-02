@@ -1,4 +1,4 @@
-# Political-ads-legality
+# Political-ads-crowdsourcing-client
 
 Allow citizens to assess the legality of political advertisement on digital platforms in the context of the European elections.
 
@@ -53,24 +53,7 @@ const config = {
 module.exports = config;
 ```
 
-Modify values of `SERVER` and `APP_DIR` variables in the script `/internals/scripts/deploy.sh`.
-- `SERVER` is the username and hostname of your server where the script will connect to copy the built application over SSH
-- `APP_DIR` is the target directory in your server where the built app will be copied
-
-For example:
-```sh
-…
-SERVER=my_user@my_host.fr
-APP_DIR=/home/my_user/target_directory_for_the_app/
-…
-```
-
-Build the application and send the built files to `APP_DIR` in `SERVER`:
-
-```sh
-npm run deploy
-```
-
+Build the application and send the built files to your server.
 On your server, you can simply serve the built application as a set of static files.
 For example, you can do this with Nginx by adding these lines to your configuration file:
 
@@ -83,6 +66,8 @@ For example, you can do this with Nginx by adding these lines to your configurat
     }
     …
 ```
+
+For information on how we deploy this app, you can take a look at the role `political-ads-crowdsourcing-client` in our [disinfo.quaidorsay.fr-ops repository](https://github.com/ambanum/disinfo.quaidorsay.fr-ops.git)
 
 - - -
 
